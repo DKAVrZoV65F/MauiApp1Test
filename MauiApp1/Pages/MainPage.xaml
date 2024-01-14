@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extension="clr-namespace:MauiApp1.Extension"
+             xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
+             x:Class="MauiApp1.Pages.MainPage">
+
+    <ContentPage.Resources>
+
+        <!-- Grid Styles -->
+        <Style TargetType="Grid">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="RowSpacing" Value="0"/>
+            <Setter Property="ColumnSpacing" Value="0"/>
+            <Setter Property="VerticalOptions" Value="Fill"/>
+            <Setter Property="HorizontalOptions" Value="Fill"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+        </Style>
+
+        <!-- Data Template -->
+        <DataTemplate x:Key="ImageTemplate">
+            <Image
+                Source="{Binding .}"
+                Aspect="AspectFill"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                WidthRequest="137"
+                HeightRequest="137">
+                <Image.Clip>
+                    <RoundRectangleGeometry
+                        Rect="0,0,137,137"
+                        CornerRadius="16" />
+                </Image.Clip>
+            </Image>
+        </DataTemplate>
+
+        <!-- CollectionView Styles -->
+        <Style TargetType="CollectionView">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="ItemSizingStrategy" Value="MeasureFirstItem"/>
+            <Setter Property="VerticalOptions" Value="Fill"/>
+            <Setter Property="HorizontalOptions" Value="Fill"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Never"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
+            <Setter Property="SelectionMode" Value="None"/>
+            <Setter Property="ItemTemplate" Value="{StaticResource ImageTemplate}"/>
+            <Setter Property="ItemsLayout">
+                <LinearItemsLayout
+                    Orientation="Horizontal"
+                    ItemSpacing="14"/>
+            </Setter>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid
+        IsVisible="{OnPlatform iOS='True', Android='False', WinUI='True', MacCatalyst='True' }"
+        IgnoreSafeArea="True"
+        RowDefinitions="590,Auto,*,76">
+
+        <!-- Main Grid -->
+        <Grid
+            Grid.Row="0"
+            IgnoreSafeArea="True"
+            RowDefinitions="137,14,137,14,137,14,137"
+            Rotation="-10"
+            Margin="-60,0">
+
+            <!-- Coll View 1 -->
+            <CollectionView
+                ItemsSource="{Binding ImageList1, Mode=OneWay}"
+                Grid.Row="0"/>
+
+            <!-- Coll View 2 -->
+            <CollectionView
+                ItemsSource="{Binding ImageList2, Mode=OneWay}"
+                Grid.Row="2"/>
+
+            <!-- Coll View 3 -->
+            <CollectionView
+                ItemsSource="{Binding ImageList3, Mode=OneWay}"
+                Grid.Row="4"/>
+
+            <!-- Coll View 4 -->
+            <CollectionView
+                ItemsSource="{Binding ImageList4, Mode=OneWay}"
+                Grid.Row="6"/>
+
+
+        </Grid>
+
+        <!-- Top Gradient -->
+        <BoxView
+            HorizontalOptions="Fill"
+            VerticalOptions="Start"
+            HeightRequest="90"
+            Grid.Row="0">
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#FFFFFF" Offset="0.0"/>
+                    <GradientStop Color="#00FFFFFF" Offset="1.0"/>
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+
+        <!-- Bottom Gradient -->
+        <BoxView
+            HorizontalOptions="Fill"
+            VerticalOptions="End"
+            HeightRequest="90"
+            Grid.Row="0">
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#FFFFFF" Offset="1.0"/>
+                    <GradientStop Color="#00FFFFFF" Offset="0.0"/>
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <!-- Background -->
+        <BoxView
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            Grid.Row="1"
+            Grid.RowSpan="3"
+            Background="White"/>
+
+        <!-- Header -->
+        <Label
+            x:Name="test"
+            Grid.Row="1"
+            Text="{Binding LocalizationResourceManager[Welcome], Mode=OneWay}"
+            FontFamily="BoldFont"
+            TextColor="#151515"
+            HorizontalTextAlignment="Center"
+            HorizontalOptions="Center"
+            FontSize="28"
+            Margin="48,12,48,0"
+            LineHeight="1.2"/>
+
+
+        <!-- Info -->
+        <Label
+            Grid.Row="2"
+            Text="{Binding LocalizationResourceManager[Description], Mode=OneWay}"
+            FontFamily="RegularFont"
+            TextColor="#888888"
+            HorizontalTextAlignment="Center"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            FontSize="18"
+            Margin="32,12,32,0"
+            LineHeight="1.2"/>
+
+
+        <!-- Button -->
+        <!--<Button
+            Grid.Row="3"
+            Text="{Binding LocalizationResourceManager[OpenImage], Mode=OneWay}"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            Margin="32,0,32,24"
+            FontSize="18"
+            TextColor="White"
+            FontFamily="BoldFont"
+            BackgroundColor="#151515"
+            Clicked="ImagePathClicked"
+            BorderWidth="0"
+            CornerRadius="26"/>-->
+
+    </Grid>
+</ContentPage>

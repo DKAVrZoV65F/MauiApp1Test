@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.MLModelPage">
+    
+    <Grid RowDefinitions="*, *, *, *, *, *, *"
+        ColumnDefinitions="*, *, *">
+
+        <Button
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.RowSpan="{OnPlatform WinUI='3', MacCatalyst='3'}"
+            Grid.ColumnSpan="5"
+            Margin="20"
+            
+            Text="Select Image"
+            FontSize="Large"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+            BackgroundColor="Transparent"/>
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            Margin="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Text="or"
+            FontSize="Medium"
+            IsVisible="{OnPlatform iOS='True', Android='True', WinUI='False', MacCatalyst='False'}"/>
+        
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="20"
+            Text="Take a picture"
+            FontSize="Large"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+            BackgroundColor="Transparent"
+            IsVisible="{OnPlatform iOS='True', Android='True', WinUI='False', MacCatalyst='False'}"/>
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="40,80,0,0"
+            Text="Danged!"
+            TextColor="Red"
+            IsVisible="False"/>
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="40,80,0,0"
+            Text="Danged!"
+            TextColor="Orange"
+            IsVisible="False"/>
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="4"
+            Margin="40,80,0,0"
+            Text="Danged!"
+            TextColor="Green"
+            IsVisible="False"/>
+
+        <ScrollView
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="3"
+            Margin="40,0,20,0">
+            <Editor
+                Text=""
+                IsReadOnly="True"
+                x:Name="TextLabelTest"
+                FontSize="20"/>
+        </ScrollView>
+
+        <Editor 
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="40,10,-80,40"
+            Text=""
+            x:Name="TextEntryTest"
+            Keyboard="Text"
+            FontSize="20"
+            IsSpellCheckEnabled="True"
+            IsTextPredictionEnabled="True"/>
+
+        <ImageButton
+            Grid.Row="6"
+            Grid.Column="4"
+            Margin="80,40,40,40"
+            Source="dotnet_bot.png"
+            BackgroundColor="Transparent"
+            Clicked="ImageButton_Clicked"/>
+    </Grid>
+</ContentPage>
