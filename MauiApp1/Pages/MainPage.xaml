@@ -56,17 +56,29 @@
     </ContentPage.Resources>
 
     <Grid
-        IsVisible="{OnPlatform iOS='True', Android='False', WinUI='True', MacCatalyst='True' }"
+        
+        Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
         IgnoreSafeArea="True"
         RowDefinitions="590,Auto,*,76">
 
         <!-- Main Grid -->
+        <Image
+            Grid.Row="0"
+            Grid.RowSpan="6"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Source="fruits.jpeg"
+            Background="White"
+            IsVisible="{OnPlatform iOS='False', WinUI='False', MacCatalyst='False'}"/>
+        
         <Grid
             Grid.Row="0"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
             IgnoreSafeArea="True"
             RowDefinitions="137,14,137,14,137,14,137"
             Rotation="-10"
-            Margin="-60,0">
+            Margin="-60,0"
+            IsVisible="{OnPlatform Android='False'}">
 
             <!-- Coll View 1 -->
             <CollectionView
@@ -88,7 +100,6 @@
                 ItemsSource="{Binding ImageList4, Mode=OneWay}"
                 Grid.Row="6"/>
 
-
         </Grid>
 
         <!-- Top Gradient -->
@@ -99,8 +110,8 @@
             Grid.Row="0">
             <BoxView.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="#FFFFFF" Offset="0.0"/>
-                    <GradientStop Color="#00FFFFFF" Offset="1.0"/>
+                    <GradientStop Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" Offset="0.0"/> 
+                    <GradientStop Color="Transparent" Offset="1.0"/>
                 </LinearGradientBrush>
             </BoxView.Background>
         </BoxView>
@@ -114,8 +125,8 @@
             Grid.Row="0">
             <BoxView.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="#FFFFFF" Offset="1.0"/>
-                    <GradientStop Color="#00FFFFFF" Offset="0.0"/>
+                    <GradientStop Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" Offset="1.0"/>
+                    <GradientStop Color="Transparent" Offset="0.0"/>
                 </LinearGradientBrush>
             </BoxView.Background>
         </BoxView>
@@ -126,25 +137,27 @@
             VerticalOptions="Fill"
             Grid.Row="1"
             Grid.RowSpan="3"
-            Background="White"/>
+            Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"/>
 
         <!-- Header -->
-        <Label
+        <!--<Label
             x:Name="test"
             Grid.Row="1"
             Text="{Binding LocalizationResourceManager[Welcome], Mode=OneWay}"
             FontFamily="BoldFont"
-            TextColor="#151515"
+            TextColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource White}}"
             HorizontalTextAlignment="Center"
             HorizontalOptions="Center"
             FontSize="28"
             Margin="48,12,48,0"
             LineHeight="1.2"/>
+        Margin="32,12,32,0"-->
 
 
         <!-- Info -->
         <Label
-            Grid.Row="2"
+            Grid.Row="1"
+            Grid.RowSpan="2"
             Text="{Binding LocalizationResourceManager[Description], Mode=OneWay}"
             FontFamily="RegularFont"
             TextColor="#888888"
@@ -152,12 +165,12 @@
             HorizontalOptions="Center"
             VerticalOptions="Start"
             FontSize="18"
-            Margin="32,12,32,0"
+            Margin="48,12,48,0"
             LineHeight="1.2"/>
 
 
         <!-- Button -->
-        <!--<Button
+        <Button
             Grid.Row="3"
             Text="{Binding LocalizationResourceManager[OpenImage], Mode=OneWay}"
             HorizontalOptions="Fill"
@@ -169,7 +182,7 @@
             BackgroundColor="#151515"
             Clicked="ImagePathClicked"
             BorderWidth="0"
-            CornerRadius="26"/>-->
+            CornerRadius="26"/>
 
     </Grid>
 </ContentPage>

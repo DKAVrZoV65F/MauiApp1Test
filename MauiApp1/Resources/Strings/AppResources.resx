@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>In common language usage, fruit normally means the seed-associated fleshy structures.</value>
+  </data>
+  <data name="MainPage" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="MLModel" xml:space="preserve">
+    <value>MLModel</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome!</value>

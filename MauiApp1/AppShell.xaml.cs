@@ -1,12 +1,15 @@
-﻿using MauiApp1.Pages;
+﻿using MauiApp1.Extension;
 
-namespace MauiApp1
+namespace MauiApp1;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public LocalizationResourceManager LocalizationResourceManager
+        => LocalizationResourceManager.Instance;
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+
+        BindingContext = this;
     }
 }

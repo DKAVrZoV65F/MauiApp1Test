@@ -3,39 +3,42 @@
     x:Class="MauiApp1.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extension="clr-namespace:MauiApp1.Extension"
+    xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
     xmlns:local="clr-namespace:MauiApp1.Pages"
     Shell.FlyoutBehavior="Flyout"
-    Shell.FlyoutWidth="270">
-
+    Shell.FlyoutWidth="250"
+    Shell.BackgroundColor="Black">
 
     <Shell.FlyoutHeader>
-        <Grid HeightRequest="100" BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
-            <Image Source="moon.png" />
+        <Grid>
+            <Image Source="fruits.jpeg" />
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="MainPage" Icon="moon.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[MainPage], Mode=OneWay}" FlyoutIcon="dotnet_bot.png">
         <ShellContent
             ContentTemplate="{DataTemplate local:MainPage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Profile" Icon="dotnet_bot.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[Profile], Mode=OneWay}" Icon="dotnet_bot.png">
         <ShellContent
             ContentTemplate="{DataTemplate local:ProfilePage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="MLModel" Icon="dotnet_bot.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[MLModel], Mode=OneWay}" Icon="dotnet_bot.png">
         <ShellContent
             ContentTemplate="{DataTemplate local:MLModelPage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Settings" Icon="dotnet_bot.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[Settings], Mode=OneWay}" Icon="dotnet_bot.png">
         <ShellContent
             ContentTemplate="{DataTemplate local:SettingsPage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Administration" Icon="dotnet_bot.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[Administration], Mode=OneWay}" Icon="dotnet_bot.png">
         <ShellContent
+            IsVisible="False"
             ContentTemplate="{DataTemplate local:HelpPage}"/>
     </FlyoutItem>
 </Shell>

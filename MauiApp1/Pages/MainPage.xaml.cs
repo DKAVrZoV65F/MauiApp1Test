@@ -1,6 +1,4 @@
 ﻿using MauiApp1.Extension;
-using MauiApp1.Resources.Strings;
-using System.Globalization;
 
 namespace MauiApp1.Pages;
 
@@ -38,6 +36,8 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
+        //  if (true) ImagePathClicked(null, null);
+
         GenerateData();
 
         ImageList1 = Randomize(source: _allImages);
@@ -64,7 +64,9 @@ public partial class MainPage : ContentPage
 
     public async void ImagePathClicked(object sender, EventArgs e)
     {
-        await DisplayAlert(Title, LocalizationResourceManager["ErrorWithAlgorithm"].ToString(), "ОK");
+        await Navigation.PushModalAsync(new HelpPage());
+
+        /*await DisplayAlert(Title, LocalizationResourceManager["ErrorWithAlgorithm"].ToString(), "ОK");
         string result = await DisplayActionSheet(LocalizationResourceManager["AppInfo"].ToString(), LocalizationResourceManager["Thanks"].ToString(), "GitHub", LocalizationResourceManager["Version"].ToString() + $" {AppInfo.Current.VersionString}", LocalizationResourceManager["Language"].ToString() + $"  {currentLanguage}", LocalizationResourceManager["Author"].ToString());
 
         if (result == null) return;
@@ -82,7 +84,7 @@ public partial class MainPage : ContentPage
 
         var response = await FilePicker.PickAsync();
         if (response == null) return;
-        await DisplayAlert(Title, response.FullPath, "OK");
+        await DisplayAlert(Title, response.FullPath, "OK");*/
 
         /*FileResult myPhoto = await MediaPicker.Default.PickPhotoAsync();
         if (myPhoto == null) return;
