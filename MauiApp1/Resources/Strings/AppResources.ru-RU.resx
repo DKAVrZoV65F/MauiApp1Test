@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Принимаю</value>
+  </data>
   <data name="Administration" xml:space="preserve">
     <value>Администрация</value>
   </data>
@@ -129,8 +132,20 @@
   <data name="MLModel" xml:space="preserve">
     <value>MLМодель</value>
   </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Пожалуйста подождите...</value>
+  </data>
+  <data name="PolicyAccept" xml:space="preserve">
+    <value>Я прочитал условия</value>
+  </data>
   <data name="Profile" xml:space="preserve">
     <value>Профиль</value>
+  </data>
+  <data name="SendPicture" xml:space="preserve">
+    <value>Отправить картинку</value>
+  </data>
+  <data name="SendText" xml:space="preserve">
+    <value>Отправить текст</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Настройки</value>

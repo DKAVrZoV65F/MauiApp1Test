@@ -59,6 +59,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\AtypDisplay-Bold.ttf" />
 	  <None Remove="Resources\Fonts\AtypDisplay-Regular.ttf" />
+	  <None Remove="Resources\Images\ai.png" />
 	  <None Remove="Resources\Images\fruits.jpeg" />
 	  <None Remove="Resources\Images\img01.jpg" />
 	  <None Remove="Resources\Images\img02.jpg" />
@@ -78,8 +79,7 @@
 	  <None Remove="Resources\Images\img16.jpg" />
 	  <None Remove="Resources\Images\img17.jpg" />
 	  <None Remove="Resources\Images\img18.jpg" />
-	  <None Remove="Resources\Images\moon.png" />
-	  <None Remove="Resources\Images\moon1.png" />
+	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Resources\Splash\github_logo.svg" />
 	</ItemGroup>
 
@@ -90,19 +90,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\PolicyPage.xaml.cs">
+	    <DependentUpon>PolicyPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Pages\ButtonControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\HelpPage.xaml">
+	  <MauiXaml Update="Pages\PolicyPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\MainPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\MLModelPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SettingsPage.xaml">

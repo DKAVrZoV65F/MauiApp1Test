@@ -1,10 +1,12 @@
-
+using MauiApp1.Extension;
 using System.Windows.Input;
 
 namespace MauiApp1.Pages;
 
 public partial class ButtonControl : Frame
 {
+    public static LocalizationResourceManager LocalizationResourceManager
+       => LocalizationResourceManager.Instance;
     public ButtonControl() => InitializeComponent();
 
     public event EventHandler<EventArgs>? Tapped;
@@ -41,7 +43,7 @@ public partial class ButtonControl : Frame
         propertyName: nameof(Text),
         returnType: typeof(string),
         declaringType: typeof(ButtonControl),
-        defaultValue: "Please wait...",
+        defaultValue: LocalizationResourceManager["PleaseWait"].ToString(),
         defaultBindingMode: BindingMode.OneWay
         );
 

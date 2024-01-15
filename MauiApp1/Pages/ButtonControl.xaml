@@ -7,12 +7,12 @@
         x:Class="MauiApp1.Pages.ButtonControl">
     <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
         <ActivityIndicator HeightRequest="15" WidthRequest="15" 
-                           Color="GreenYellow" 
+                           Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                            IsRunning="True"
                            IsVisible="{Binding Source={x:Reference this}, Path=IsInProgress}" />
         <Label x:Name="lblButtonText"
                Text="{Binding Source={x:Reference this},Path=Text}"
-               TextColor="White"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center" />
     </HorizontalStackLayout>

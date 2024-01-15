@@ -16,29 +16,18 @@
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="{Binding LocalizationResourceManager[MainPage], Mode=OneWay}" FlyoutIcon="dotnet_bot.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[MLModel], Mode=OneWay}" FlyoutIcon="AI.png">
         <ShellContent
             ContentTemplate="{DataTemplate local:MainPage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="{Binding LocalizationResourceManager[Profile], Mode=OneWay}" Icon="dotnet_bot.png">
-        <ShellContent
-            ContentTemplate="{DataTemplate local:ProfilePage}"/>
-    </FlyoutItem>
-
-    <FlyoutItem Title="{Binding LocalizationResourceManager[MLModel], Mode=OneWay}" Icon="dotnet_bot.png">
-        <ShellContent
-            ContentTemplate="{DataTemplate local:MLModelPage}"/>
-    </FlyoutItem>
-
-    <FlyoutItem Title="{Binding LocalizationResourceManager[Settings], Mode=OneWay}" Icon="dotnet_bot.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[Settings], Mode=OneWay}" Icon="Settings.png">
         <ShellContent
             ContentTemplate="{DataTemplate local:SettingsPage}"/>
     </FlyoutItem>
 
     <FlyoutItem Title="{Binding LocalizationResourceManager[Administration], Mode=OneWay}" Icon="dotnet_bot.png">
         <ShellContent
-            IsVisible="False"
-            ContentTemplate="{DataTemplate local:HelpPage}"/>
+            IsVisible="False"/>
     </FlyoutItem>
 </Shell>
