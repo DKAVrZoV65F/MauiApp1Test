@@ -6,7 +6,7 @@
              xmlns:customControls="clr-namespace:MauiApp1.Pages"
              x:Class="MauiApp1.Pages.MainPage">
 
-    <Grid RowDefinitions="*, *, *, *, *, *"
+    <Grid RowDefinitions="*, *, *, *, *, 150"
         ColumnDefinitions="*, *, Auto">
 
         <Label
@@ -51,7 +51,8 @@
             Grid.Row="5"
             Grid.Column="2"
             Margin="40"
-            BackgroundColor="Black"
+            CornerRadius="26"
+            BackgroundColor="#151515"
             Tapped="btnPicture_Tapped"
             IsVisible="True"/>
 
@@ -60,8 +61,9 @@
             Text="{Binding LocalizationResourceManager[SendText], Mode=OneWay}"
             Grid.Row="5"
             Grid.Column="2"
+            CornerRadius="26"
             Margin="40"
-            BackgroundColor="Black"
+            BackgroundColor="#151515"
             Tapped="btnText_Tapped"
             IsVisible="False"/>
 

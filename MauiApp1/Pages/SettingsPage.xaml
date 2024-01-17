@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.Pages.SettingsPage">
-    
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="MauiApp1.Pages.SettingsPage"
+             Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray}}">
+    <ScrollView>
+        <VerticalStackLayout >
+            <Label FontSize="20" TextColor="Blue" Text="Настройки" />
+            <Label FontSize="20" Text="Сеть" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="networkLb_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label FontSize="20" Text="Язык" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="languageLb_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label FontSize="20" Text="Тема" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="themeLb_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
 
+            <Label FontSize="20" TextColor="Blue" Text="Помощь"/>
+            <Label FontSize="20" Text="GitHub" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ghLb_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label FontSize="20" Text="Mail" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="mailLb_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </VerticalStackLayout>
+    </ScrollView>
+    
 </ContentPage>
