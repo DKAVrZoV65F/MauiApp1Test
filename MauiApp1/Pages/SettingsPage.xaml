@@ -76,7 +76,7 @@
                 <TapGestureRecognizer Tapped="mailLb_Tapped" />
             </Label.GestureRecognizers>
         </Label>
-        
+
         <Label
             Grid.Row="11"
             Text="Version of this application is V0.1 for Android"
@@ -85,7 +85,11 @@
             TextColor="Gray"
             VerticalOptions="Fill" 
             HorizontalOptions="Fill" 
-            Padding="40,20,0,0" />
+            Padding="40,20,0,0">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="secret_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
     </Grid>
 
 </ContentPage>

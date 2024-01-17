@@ -7,6 +7,8 @@ public partial class SettingsPage : ContentPage
     public LocalizationResourceManager LocalizationResourceManager
        => LocalizationResourceManager.Instance;
 
+    int counter = 0;
+
     /*readonly string text = "Very long text! )";
     bool IsFlag = true;
     readonly List<string> ipAddress = ["192.168.1.1", "192.168.55.99", "192.168.55.102"];
@@ -17,13 +19,9 @@ public partial class SettingsPage : ContentPage
     string command = "IMAGE";
     string currentLanguage = "English";
     readonly string RUSSIAN = "Русский";
-    readonly string ENGLISH = "English";*/
+    readonly string ENGLISH = "English";
 
-    public SettingsPage()
-    {
-        InitializeComponent();
-
-        /*FormattedString formattedString = new FormattedString();
+    FormattedString formattedString = new FormattedString();
         formattedString.Spans.Add(new Span
         {
             Text = "Сегодня ",
@@ -40,20 +38,21 @@ public partial class SettingsPage : ContentPage
             Text = " погода!",
             FontAttributes = FontAttributes.Bold
         });
-        testLabel.FormattedText = formattedString;*/
+    testLabel.FormattedText = formattedString;
 
-        /*Ping ping = new();
-        foreach (string item in ipAddress)
-        {
-            PingReply pingReply = ping.Send(item);
-            ipResult.Add(pingReply.Status.ToString());
-        }
-
-        foreach (string item in ipResult)
-        {
-            await DisplayAlert(Title, item, "OK");
-        }*/
+    Ping ping = new();
+    foreach (string item in ipAddress)
+    {
+        PingReply pingReply = ping.Send(item);
+        ipResult.Add(pingReply.Status.ToString());
     }
+
+    foreach (string item in ipResult)
+    {
+        await DisplayAlert(Title, item, "OK");
+    }*/
+
+    public SettingsPage() => InitializeComponent();
 
     private async void networkLb_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new NetworkPage());
 
@@ -67,5 +66,14 @@ public partial class SettingsPage : ContentPage
     {
         await Clipboard.SetTextAsync("gw9ckwfsp@mozmail.com");
         await DisplayAlert(Title, "Mail copied in clipboard", "OK");
+    }
+
+    private async void secret_Tapped(object sender, TappedEventArgs e) {
+        if (counter > 5)
+        {
+            await DisplayAlert(Title, "Please reload app", "OK");
+            //Preferences.Set("IsAdminPanel", true);
+        }
+        else if (counter <= 5) counter++;
     }
 }

@@ -11,5 +11,8 @@ public partial class AppShell : Shell
         InitializeComponent();
 
         BindingContext = this;
+        //AdminPanel.IsVisible = Preferences.Get("IsAdminPanel", false);
+
+        AdminPanel.IsVisible = true;
     }
 }

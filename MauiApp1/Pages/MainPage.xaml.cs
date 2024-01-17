@@ -7,13 +7,7 @@ public partial class MainPage : ContentPage
 {
     public LocalizationResourceManager LocalizationResourceManager
        => LocalizationResourceManager.Instance;
-    static readonly Dictionary<DevicePlatform, IEnumerable<string>> FileType = new()
-    {
-        { DevicePlatform.Android, new[] { "text/*" } } ,
-        { DevicePlatform.iOS, new[] { "public.json", "public.plain-text" } },
-        { DevicePlatform.MacCatalyst, new[] { "public.png", "public.plain-text" } },
-        { DevicePlatform.WinUI, new[] { ".png", ".jpg" } }
-    };
+
     string text = "";
     bool IsFlag = true;
     Random rnd = new Random();
@@ -75,7 +69,6 @@ public partial class MainPage : ContentPage
         using Stream sourceStream = await myPhoto.OpenReadAsync();
         using FileStream localFileStream = File.OpenWrite(localFilePath);
         await sourceStream.CopyToAsync(localFileStream);
-        //await DisplayAlert(Title, localFilePath, "OK");
         localFileStream.Close();
 
         if (string.IsNullOrEmpty(localFilePath)) return;
