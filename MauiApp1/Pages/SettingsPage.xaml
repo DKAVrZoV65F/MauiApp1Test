@@ -1,39 +1,91 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.Pages.SettingsPage"
-             Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray}}">
-    <ScrollView>
-        <VerticalStackLayout >
-            <Label FontSize="20" TextColor="Blue" Text="Настройки" />
-            <Label FontSize="20" Text="Сеть" >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="networkLb_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
-            <Label FontSize="20" Text="Язык" >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="languageLb_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
-            <Label FontSize="20" Text="Тема" >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="themeLb_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
+             x:Class="MauiApp1.Pages.SettingsPage">
 
-            <Label FontSize="20" TextColor="Blue" Text="Помощь"/>
-            <Label FontSize="20" Text="GitHub" >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ghLb_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
-            <Label FontSize="20" Text="Mail" >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="mailLb_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
-        </VerticalStackLayout>
-    </ScrollView>
-    
+    <Grid RowDefinitions="50, *, 10, *, 10, *, 50, 50, *, 10, *, Auto"
+        ColumnDefinitions="*"
+        Margin="-10,0,-10,0">
+
+        <Label
+            Grid.Row="0"
+            FontSize="Title"
+            TextColor="Blue"
+            Text="Настройки"
+            Padding="20,10,0,0"/>
+
+        <Label              
+            Grid.Row="1"
+            FontSize="20"
+            Text="Сеть"
+            Padding="40,25,20,0">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="networkLb_Tapped"/>
+            </Label.GestureRecognizers>
+        </Label>
+        <BoxView Grid.Row="2" HeightRequest="2" Color="Black" Margin="40,0,0,0" />
+
+        <Label
+            Grid.Row="3"
+            FontSize="20" 
+            Text="Язык"
+            Padding="40,50,20,0">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="languageLb_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
+        <BoxView Grid.Row="4" HeightRequest="2" Color="Black" Margin="40,0,0,0" />
+
+        <Label
+            Grid.Row="5"
+            FontSize="20"
+            Text="Тема"
+            Padding="40,50,20,0">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="themeLb_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
+        <BoxView Grid.Row="6" HeightRequest="10" Color="Black" Margin="0,0,0,0" />
+
+
+        <Label
+            Grid.Row="7"
+            FontSize="Title"
+            TextColor="Blue"
+            Text="Помощь"
+            Padding="20,10,0,0"/>
+        
+        
+        <Label
+            Grid.Row="8"
+            FontSize="20"
+            Text="GitHub"
+            Padding="40,50,20,0">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ghLb_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
+        <BoxView Grid.Row="9" HeightRequest="2" Color="Black" Margin="40,0,0,0" />
+        
+        <Label
+            Grid.Row="10"
+            FontSize="20"
+            Text="Mail"
+            Padding="40,50,20,0">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="mailLb_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
+        
+        <Label
+            Grid.Row="11"
+            Text="Version of this application is V0.1 for Android"
+            HeightRequest="50"
+            Background="Black"
+            TextColor="Gray"
+            VerticalOptions="Fill" 
+            HorizontalOptions="Fill" 
+            Padding="40,20,0,0" />
+    </Grid>
+
 </ContentPage>

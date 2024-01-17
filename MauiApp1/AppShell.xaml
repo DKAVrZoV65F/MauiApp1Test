@@ -6,9 +6,9 @@
     xmlns:extension="clr-namespace:MauiApp1.Extension"
     xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
     xmlns:local="clr-namespace:MauiApp1.Pages"
+    Shell.BackgroundColor="Black"
     Shell.FlyoutBehavior="Flyout"
-    Shell.FlyoutWidth="250"
-    Shell.BackgroundColor="Black">
+    Shell.FlyoutWidth="250">
 
     <Shell.FlyoutHeader>
         <Grid>

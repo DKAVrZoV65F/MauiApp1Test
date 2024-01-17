@@ -6,13 +6,7 @@ public partial class PolicyPage : ContentPage
 {
     public LocalizationResourceManager LocalizationResourceManager
        => LocalizationResourceManager.Instance;
-    /*static readonly Dictionary<DevicePlatform, IEnumerable<string>> FileType = new()
-    {
-        { DevicePlatform.Android, new[] { "text/*" } } ,
-        { DevicePlatform.iOS, new[] { "public.json", "public.plain-text" } },
-        { DevicePlatform.MacCatalyst, new[] { "public.png", "public.plain-text" } },
-        { DevicePlatform.WinUI, new[] { ".png", ".jpg" } }
-    };*/
+
     private List<string> _allImages = [];
     private Random _random = new();
 
@@ -73,64 +67,5 @@ public partial class PolicyPage : ContentPage
         var response = await FilePicker.PickAsync();
         if (response == null) return;
         await DisplayAlert(Title, response.FullPath, "OK");*/
-
-        /*FileResult myPhoto = await MediaPicker.Default.PickPhotoAsync();
-        if (myPhoto == null) return;
-        string localFilePath = Path.Combine(FileSystem.CacheDirectory, myPhoto.FileName);
-        using Stream sourceStream = await myPhoto.OpenReadAsync();
-        using FileStream localFileStream = File.OpenWrite(localFilePath);
-        await sourceStream.CopyToAsync(localFileStream);
-        //await DisplayAlert(Title, localFilePath, "OK");
-        localFileStream.Close();
-
-
-
-        // if (!File.Exists(path)) return;
-
-        using TcpClient tcpClient = new();
-        await tcpClient.ConnectAsync(ipServer, portServer);
-        var stream = tcpClient.GetStream();
-
-        // буфер для входящих данных
-        var response = new List<byte>();
-        NetworkStream networkStream = tcpClient.GetStream();
-        FileStream fileStream = null;
-
-        int bytesRead = 10; // для считывания байтов из потока
-        await stream.WriteAsync(Encoding.UTF8.GetBytes(command + "\0"));
-
-
-
-        string fileName = localFilePath;
-        FileInfo fileInfo = new FileInfo(fileName);
-        long fileSize = fileInfo.Length;
-        //await DisplayAlert(Title, fileSize.ToString(), "OK");
-        await stream.WriteAsync(Encoding.UTF8.GetBytes(fileSize + "\0"));
-        if (command == "IMAGE")
-        {
-            byte[] buffer = new byte[1024];
-            int bytesReadImg;
-            string filePath = localFilePath;
-            fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            while ((bytesReadImg = fileStream.Read(buffer, 0, buffer.Length)) != 0)
-            {
-                tcpClient.GetStream().Write(buffer, 0, bytesReadImg);
-            }
-            fileStream.Close();
-        }
-
-        //logEditor.Text = "Send image. Close image. Waiting for message...";
-
-        while ((bytesRead = stream.ReadByte()) != '\0')
-        {
-            // добавляем в буфер
-            response.Add((byte)bytesRead);
-        }
-        var translation = Encoding.UTF8.GetString(response.ToArray());
-        //logEditor.Text += $"\nWord: {translation}";
-        await DisplayAlert(Title, translation, "OK");
-        //logEditor.Text = "";
-        response.Clear();
-        networkStream.Close();*/
     }
 }
