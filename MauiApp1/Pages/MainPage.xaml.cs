@@ -1,5 +1,4 @@
 ﻿using MauiApp1.Extension;
-using System.Net.Sockets;
 
 namespace MauiApp1.Pages;
 
@@ -10,9 +9,9 @@ public partial class MainPage : ContentPage
 
     string text = "";
     bool IsFlag = true;
-    Random rnd = new Random();
-    int minValue = 100;
-    int maxValue = 500;
+    readonly Random rnd = new();
+    readonly int minValue = 100;
+    readonly int maxValue = 500;
 
     public MainPage()
     {
@@ -63,19 +62,19 @@ public partial class MainPage : ContentPage
         btnText.IsInProgress = true;
         btnPicture.IsInProgress = true;
 
-        FileResult myPhoto = await MediaPicker.Default.PickPhotoAsync();
-        if (myPhoto == null) return;
-        string localFilePath = Path.Combine(FileSystem.CacheDirectory, myPhoto.FileName);
-        using Stream sourceStream = await myPhoto.OpenReadAsync();
-        using FileStream localFileStream = File.OpenWrite(localFilePath);
-        await sourceStream.CopyToAsync(localFileStream);
-        localFileStream.Close();
 
-        if (string.IsNullOrEmpty(localFilePath)) return;
+        string path = await GetPicturePath();
+        if (string.IsNullOrEmpty(path))
+        {
+            btnText.IsInProgress = false;
+            btnPicture.IsInProgress = false;
+            IsFlag = true;
+            return;
+        }
 
 
         TextLabelTest.Text += "You pick a photo \" ";
-        foreach (var item in localFilePath)
+        foreach (var item in path)
         {
             TextLabelTest.Text += item;
             await Task.Delay(rnd.Next(minValue, maxValue));
@@ -136,5 +135,17 @@ public partial class MainPage : ContentPage
         btnText.IsInProgress = false;
         btnPicture.IsInProgress = false;
         IsFlag = true;
+    }
+
+    private async Task<string> GetPicturePath()
+    {
+        FileResult myPhoto = await MediaPicker.Default.PickPhotoAsync();
+        if (myPhoto == null) return "";
+        string localFilePath = Path.Combine(FileSystem.CacheDirectory, myPhoto.FileName);
+        using Stream sourceStream = await myPhoto.OpenReadAsync();
+        using FileStream localFileStream = File.OpenWrite(localFilePath);
+        await sourceStream.CopyToAsync(localFileStream);
+        localFileStream.Close();
+        return localFilePath;
     }
 }

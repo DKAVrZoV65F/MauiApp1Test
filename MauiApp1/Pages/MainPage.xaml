@@ -17,6 +17,7 @@
             Margin="40"
             Text="Danged!"
             TextColor="Red"
+            FontFamily="RegularFont"
             IsVisible="True"/>
 
         <ScrollView
@@ -29,6 +30,7 @@
                 Text=""
                 IsReadOnly="True"
                 x:Name="TextLabelTest"
+                FontFamily="RegularFont"
                 FontSize="20"/>
         </ScrollView>
 
@@ -42,6 +44,7 @@
             x:Name="TextEntryTest"
             Keyboard="Text"
             FontSize="20"
+            FontFamily="RegularFont"
             IsSpellCheckEnabled="True"
             IsTextPredictionEnabled="True"/>
 

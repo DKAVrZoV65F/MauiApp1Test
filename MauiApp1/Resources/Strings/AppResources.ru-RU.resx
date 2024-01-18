@@ -123,14 +123,38 @@
   <data name="Administration" xml:space="preserve">
     <value>Администрация</value>
   </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Маш.Об.Анализатор Пищевых Продуктов(МОАПП)</value>
+  </data>
+  <data name="ChatSettings" xml:space="preserve">
+    <value>Настройки чата</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>В обиходе термин "фрукт" обычно означает мясистые структуры, связанные с семенами.</value>
+  </data>
+  <data name="For" xml:space="preserve">
+    <value>для</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>Почта</value>
+  </data>
+  <data name="MailMessage" xml:space="preserve">
+    <value>Адрес почты был скопирован в буфер обмена.</value>
   </data>
   <data name="MainPage" xml:space="preserve">
     <value>Главная страница</value>
   </data>
   <data name="MLModel" xml:space="preserve">
     <value>MLМодель</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Сеть</value>
   </data>
   <data name="PleaseWait" xml:space="preserve">
     <value>Пожалуйста подождите...</value>
@@ -140,6 +164,9 @@
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Профиль</value>
+  </data>
+  <data name="ReloadApp" xml:space="preserve">
+    <value>Пожалуйста, перезапустите приложение, чтобы изменения вступили в силу.</value>
   </data>
   <data name="SendPicture" xml:space="preserve">
     <value>Отправить картинку</value>

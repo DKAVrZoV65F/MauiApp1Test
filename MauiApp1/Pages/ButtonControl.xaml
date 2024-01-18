@@ -13,6 +13,7 @@
         <Label x:Name="lblButtonText"
                Text="{Binding Source={x:Reference this},Path=Text}"
                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+               FontFamily="RegularFont"
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center" />
     </HorizontalStackLayout>

@@ -123,14 +123,38 @@
   <data name="Administration" xml:space="preserve">
     <value>Administration</value>
   </data>
+  <data name="AppName" xml:space="preserve">
+    <value>MLFoodAnalyzer</value>
+  </data>
+  <data name="ChatSettings" xml:space="preserve">
+    <value>Chat Settings</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>In common language usage, fruit normally means the seed-associated fleshy structures.</value>
+  </data>
+  <data name="For" xml:space="preserve">
+    <value>for</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>Mail</value>
+  </data>
+  <data name="MailMessage" xml:space="preserve">
+    <value>The email address has been copied to the clipboard.</value>
   </data>
   <data name="MainPage" xml:space="preserve">
     <value>MainPage</value>
   </data>
   <data name="MLModel" xml:space="preserve">
     <value>MLModel</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Network</value>
   </data>
   <data name="PleaseWait" xml:space="preserve">
     <value>Please wait...</value>
@@ -140,6 +164,9 @@
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="ReloadApp" xml:space="preserve">
+    <value>Please restart the application for the changes to take effect.</value>
   </data>
   <data name="SendPicture" xml:space="preserve">
     <value>Send picture</value>

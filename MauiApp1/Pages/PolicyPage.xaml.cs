@@ -44,11 +44,9 @@ public partial class PolicyPage : ContentPage
 
     private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e) => btnAccept.IsEnabled = e.Value;
 
-    public async void ImagePathClicked(object sender, EventArgs e)
-    {
-        await Navigation.PopModalAsync();
-
-        /*await DisplayAlert(Title, LocalizationResourceManager["ErrorWithAlgorithm"].ToString(), "ОK");
+    public async void ImagePathClicked(object sender, EventArgs e) => await Navigation.PopModalAsync();
+    
+    /*await DisplayAlert(Title, LocalizationResourceManager["ErrorWithAlgorithm"].ToString(), "ОK");
         string result = await DisplayActionSheet(LocalizationResourceManager["AppInfo"].ToString(), LocalizationResourceManager["Thanks"].ToString(), "GitHub", LocalizationResourceManager["Version"].ToString() + $" {AppInfo.Current.VersionString}", LocalizationResourceManager["Language"].ToString() + $"  {currentLanguage}", LocalizationResourceManager["Author"].ToString());
 
         if (result == null) return;
@@ -67,5 +65,4 @@ public partial class PolicyPage : ContentPage
         var response = await FilePicker.PickAsync();
         if (response == null) return;
         await DisplayAlert(Title, response.FullPath, "OK");*/
-    }
 }
