@@ -31,10 +31,10 @@ public partial class LanguagePage : ContentPage
     void OnLanguageCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
         RadioButton selectedRadioButton = ((RadioButton)sender);
+        string? checkBoxValue = (selectedRadioButton.Value != null) ? selectedRadioButton.Value.ToString() : "";
+        if (string.IsNullOrEmpty(checkBoxValue)) return;
 
-        if (string.IsNullOrEmpty(selectedRadioButton.Value.ToString())) return;
-
-        CultureInfo cultureInfo = new CultureInfo(selectedRadioButton.Value.ToString());
+        CultureInfo cultureInfo = new CultureInfo(checkBoxValue);
         LocalizationResourceManager.Instance.SetCulture(cultureInfo);
     }
 }

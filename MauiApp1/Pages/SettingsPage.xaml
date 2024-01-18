@@ -109,7 +109,7 @@
             Grid.Row="11"
             Grid.ColumnSpan="2"
             Text=""
-            FontFamily="RegularFont"
+            FontFamily="BoldFont"
             HeightRequest="50"
             Background="Black"
             TextColor="Gray"

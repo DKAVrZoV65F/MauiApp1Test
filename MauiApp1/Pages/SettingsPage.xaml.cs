@@ -66,7 +66,6 @@ public partial class SettingsPage : ContentPage
 #elif WINDOWS
         AppVersionLB.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " Windows v0.1");
 #endif
-
         UpdateTime();
     }
 
@@ -109,11 +108,4 @@ public partial class SettingsPage : ContentPage
             await Task.Delay(1000);
         }
     }
-
-
-    /*var switchToCulture = AppResources.Culture.TwoLetterISOLanguageName.
-            Equals("en", StringComparison.InvariantCultureIgnoreCase) ?
-            new CultureInfo("ru-RU") : new CultureInfo("en-US");
-
-    LocalizationResourceManager.Instance.SetCulture(switchToCulture);*/
 }

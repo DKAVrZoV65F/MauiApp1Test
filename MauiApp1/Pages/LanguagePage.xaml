@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pages.LanguagePage">
 
-    <Grid RowDefinitions="50, *, *, *, Auto"
+    <Grid RowDefinitions="50, 100, 100"
         ColumnDefinitions="*, Auto"
         Margin="20,0,20,0">
 
@@ -15,10 +15,9 @@
             FontFamily="RegularFont"
             Text="{Binding LocalizationResourceManager[Language], Mode=OneWay}"/>
 
-        
          <RadioButton
-             IsChecked="True"
              x:Name="RussianRb"
+             FontSize="Title"
              Grid.Row="1"
              Grid.ColumnSpan="2"
              Content="Русский" 
@@ -28,6 +27,7 @@
         <RadioButton
             x:Name="EnglishRb"
             Grid.Row="2"
+            FontSize="Title"
             Grid.ColumnSpan="2"
             Content="English"
             Value="en-US"

@@ -178,7 +178,7 @@
             VerticalOptions="Fill"
             Orientation="Horizontal">
             <CheckBox CheckedChanged="CheckBox_CheckedChanged"/>
-            <Label FontSize="20" Margin="30" Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}" />
+            <Label FontSize="20" FontFamily="BoldFont" Margin="30" Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}" />
         </StackLayout>
 
         <!-- Button -->
