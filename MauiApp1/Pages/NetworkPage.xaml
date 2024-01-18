@@ -2,11 +2,36 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pages.NetworkPage"
+             xmlns:extension="clr-namespace:MauiApp1.Extension"
+             xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
              Title="{Binding LocalizationResourceManager[Network], Mode=OneWay}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid RowDefinitions="*, *, *, *, *"
+        ColumnDefinitions="Auto, *">
+        <Label
+            Grid.Row = "0"
+            Grid.Column = "0"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            FontFamily="BoldFont"
+            FontSize="20"
+            Text="IP:"/>
+        <Entry
+            Grid.Row = "0"
+            Grid.Column = "1"
+            Text="192.168.55.55"/>
+        <Label
+            Grid.Row = "1"
+            Grid.Column = "0"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            FontFamily="BoldFont"
+            FontSize="20"
+            Text="Port:"/>
+        <Entry
+            Grid.Row = "1"
+            Grid.Column = "1"
+            Text="8080"/>
+
+    </Grid>
 </ContentPage>
