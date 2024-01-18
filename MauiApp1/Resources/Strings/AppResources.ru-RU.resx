@@ -124,7 +124,7 @@
     <value>Администрация</value>
   </data>
   <data name="AppName" xml:space="preserve">
-    <value>Маш.Об.Анализатор Пищевых Продуктов(МОАПП)</value>
+    <value>ML Анализатор Пищевых Продуктов(MLАПП)</value>
   </data>
   <data name="ChatSettings" xml:space="preserve">
     <value>Настройки чата</value>
