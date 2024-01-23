@@ -58,7 +58,7 @@
     <Grid
         Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
         IgnoreSafeArea="True"
-        RowDefinitions="590,Auto,*,100,76">
+        RowDefinitions="590,Auto,*,110,76">
 
         <!-- Main Grid -->
         <Image

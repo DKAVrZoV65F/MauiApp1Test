@@ -129,14 +129,38 @@
   <data name="ChatSettings" xml:space="preserve">
     <value>Chat Settings</value>
   </data>
+  <data name="CheckTheConnection" xml:space="preserve">
+    <value>Check the connection</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>In common language usage, fruit normally means the seed-associated fleshy structures.</value>
+  </data>
+  <data name="DestHostUn" xml:space="preserve">
+    <value>Destination Host Unreachable</value>
+  </data>
+  <data name="EnterTheIp" xml:space="preserve">
+    <value>Enter the IP address</value>
+  </data>
+  <data name="EnterThePassword" xml:space="preserve">
+    <value>Enter the password</value>
+  </data>
+  <data name="EnterThePort" xml:space="preserve">
+    <value>Enter the port</value>
+  </data>
+  <data name="EnterTheText" xml:space="preserve">
+    <value>Enter the text</value>
+  </data>
+  <data name="ErrorWithIPOrPort" xml:space="preserve">
+    <value>Error With IP or port</value>
   </data>
   <data name="For" xml:space="preserve">
     <value>for</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Help</value>
+  </data>
+  <data name="IPAddress" xml:space="preserve">
+    <value>IP address:</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
@@ -156,11 +180,17 @@
   <data name="Network" xml:space="preserve">
     <value>Network</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password:</value>
+  </data>
   <data name="PleaseWait" xml:space="preserve">
     <value>Please wait...</value>
   </data>
   <data name="PolicyAccept" xml:space="preserve">
     <value>I read policy</value>
+  </data>
+  <data name="Port" xml:space="preserve">
+    <value>Port:</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
@@ -176,6 +206,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="Sucess" xml:space="preserve">
+    <value>Sucess</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome!</value>

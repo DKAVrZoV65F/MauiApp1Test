@@ -5,7 +5,7 @@
 
     <Grid RowDefinitions="50, 100, 100"
         ColumnDefinitions="*, Auto"
-        Margin="20,0,20,0">
+        Margin="10,10,20,0">
 
         <Label
             Grid.Row="0"

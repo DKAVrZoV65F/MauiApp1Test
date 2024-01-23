@@ -4,22 +4,21 @@
              x:Class="MauiApp1.Pages.NetworkPage"
              xmlns:extension="clr-namespace:MauiApp1.Extension"
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
-             Title="{Binding LocalizationResourceManager[Network], Mode=OneWay}">
+             xmlns:customControls="clr-namespace:MauiApp1.Pages">
 
-    <Grid RowDefinitions="*, *, *, *, *"
-        ColumnDefinitions="Auto, *">
+    <Grid RowDefinitions="50, 50, 50, 50, 150"
+          ColumnDefinitions="Auto, *"
+          Margin="10,40,20,0">
+
         <Label
             Grid.Row = "0"
-            Grid.Column = "0"
-            VerticalTextAlignment="Center"
-            HorizontalTextAlignment="Center"
-            FontFamily="BoldFont"
-            FontSize="20"
-            Text="IP:"/>
-        <Entry
-            Grid.Row = "0"
-            Grid.Column = "1"
-            Text="192.168.55.55"/>
+            Grid.ColumnSpan="2"
+            FontSize="Title"
+            TextColor="Aqua"
+            FontFamily="RegularFont"
+            Margin="0,-20,0,0"
+            Text="{Binding LocalizationResourceManager[Network], Mode=OneWay}"/>
+
         <Label
             Grid.Row = "1"
             Grid.Column = "0"
@@ -27,11 +26,62 @@
             HorizontalTextAlignment="Center"
             FontFamily="BoldFont"
             FontSize="20"
-            Text="Port:"/>
+            Text="{Binding LocalizationResourceManager[IPAddress], Mode=OneWay}"/>
         <Entry
+            x:Name="IpEntr"
             Grid.Row = "1"
             Grid.Column = "1"
-            Text="8080"/>
+            FontFamily="RegularFont"
+            FontSize="20"
+            Keyboard="Telephone"
+            Placeholder="{Binding LocalizationResourceManager[EnterTheIp], Mode=OneWay}"
+            Text=""/>
+
+        <Label
+            Grid.Row = "2"
+            Grid.Column = "0"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            FontFamily="BoldFont"
+            FontSize="20"
+            Text="{Binding LocalizationResourceManager[Port], Mode=OneWay}"/>
+        <Entry
+            x:Name="PortEntr"
+            Grid.Row = "2"
+            FontFamily="RegularFont"
+            FontSize="20"
+            Grid.Column = "1"
+            Keyboard="Numeric"
+            Placeholder="{Binding LocalizationResourceManager[EnterThePort], Mode=OneWay}"
+            Text=""/>
+
+        <Label
+            Grid.Row = "3"
+            Grid.Column = "0"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            FontFamily="BoldFont"
+            FontSize="20"
+            Text="{Binding LocalizationResourceManager[Password], Mode=OneWay}"/>
+        <Entry
+            x:Name="PasswordEntr"
+            IsPassword="True"
+            Placeholder="{Binding LocalizationResourceManager[EnterThePassword], Mode=OneWay}"
+            Grid.Row = "3"
+            FontFamily="RegularFont"
+            FontSize="20"
+            Grid.Column = "1"
+            Text=""/>
+
+        <customControls:ButtonControl
+            x:Name="CheckIpAPort"
+            Grid.Row = "4"
+            Grid.ColumnSpan="2"
+            Text="{Binding LocalizationResourceManager[CheckTheConnection], Mode=OneWay}"
+            CornerRadius="26"
+            Margin="40"
+            Tapped="PingServer"
+            BackgroundColor="#151515"/>
 
     </Grid>
 </ContentPage>

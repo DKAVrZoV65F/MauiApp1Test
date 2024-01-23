@@ -6,13 +6,13 @@
              xmlns:customControls="clr-namespace:MauiApp1.Pages"
              x:Class="MauiApp1.Pages.MainPage">
 
-    <Grid RowDefinitions="*, *, *, *, *, 150"
-        ColumnDefinitions="*, *, Auto">
+    <Grid RowDefinitions="100, *, 150"
+        ColumnDefinitions="*, Auto">
 
         <Label
             Grid.Row="0"
             Grid.Column="0"
-            Grid.ColumnSpan="3"
+            Grid.ColumnSpan="2"
             HorizontalTextAlignment="Center"
             Margin="40"
             Text="Danged!"
@@ -20,38 +20,44 @@
             FontFamily="RegularFont"
             IsVisible="True"/>
 
-        <ScrollView
+        <Border
             Grid.Row="1"
             Grid.Column="0"
-            Grid.RowSpan="4"
-            Grid.ColumnSpan="3"
-            Margin="40,0,20,0">
-            <Editor
-                Text=""
-                IsReadOnly="True"
-                x:Name="TextLabelTest"
-                FontFamily="RegularFont"
-                FontSize="20"/>
-        </ScrollView>
+            Grid.ColumnSpan="2"
+            Margin="40,0,20,0"
+            Stroke="Gray">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <ScrollView>
+                <Editor
+                    Text=""
+                    IsReadOnly="True"
+                    x:Name="TextLabelTest"
+                    FontFamily="RegularFont"
+                    FontSize="20"/>
+            </ScrollView>
+        </Border>
+
 
         <Editor
             TextChanged="TextEntryTest_TextChanged"
-            Grid.Row="5"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Margin="40"
             Text=""
+            Margin="40"
+            Grid.Row="2"
+            Grid.Column="0"
             x:Name="TextEntryTest"
             Keyboard="Text"
             FontSize="20"
             FontFamily="RegularFont"
             IsSpellCheckEnabled="True"
-            IsTextPredictionEnabled="True"/>
+            IsTextPredictionEnabled="True"
+            Placeholder="{Binding LocalizationResourceManager[EnterTheText], Mode=OneWay}"/>
 
         <customControls:ButtonControl 
             x:Name="btnPicture"
             Text="{Binding LocalizationResourceManager[SendPicture], Mode=OneWay}"
-            Grid.Row="5"
+            Grid.Row="2"
             Grid.Column="2"
             Margin="40"
             CornerRadius="26"
@@ -62,14 +68,14 @@
         <customControls:ButtonControl 
             x:Name="btnText"
             Text="{Binding LocalizationResourceManager[SendText], Mode=OneWay}"
-            Grid.Row="5"
+            Grid.Row="2"
             Grid.Column="2"
             CornerRadius="26"
             Margin="40"
             BackgroundColor="#151515"
             Tapped="btnText_Tapped"
             IsVisible="False"/>
-
+        
     </Grid>
 
 </ContentPage>

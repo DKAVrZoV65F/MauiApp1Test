@@ -3,10 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pages.ThemePage"
              xmlns:extension="clr-namespace:MauiApp1.Extension"
-             xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
-             Title="{Binding LocalizationResourceManager[ChatSettings], Mode=OneWay}">
-    <Grid RowDefinitions="*, *, *, *, *"
-        ColumnDefinitions="*, *">
-        
+             xmlns:strings="clr-namespace:MauiApp1.Resources.Strings">
+    
+    <Grid RowDefinitions="50, *, *, *, *"
+          ColumnDefinitions="*, *"
+          Margin="10,40,20,0">
+
+        <Label
+            Grid.Row = "0"
+            Grid.ColumnSpan="2"
+            FontSize="20"
+            TextColor="Aqua"
+            FontFamily="RegularFont"
+            Margin="0,-20,0,0"
+            Text="{Binding LocalizationResourceManager[ChatSettings], Mode=OneWay}"/>
+
+
+
+        <!--10 - 40  https://metanit.com/sharp/maui/4.12.php -->
     </Grid>
 </ContentPage>
