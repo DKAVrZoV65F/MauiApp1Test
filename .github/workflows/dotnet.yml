@@ -107,7 +107,7 @@ jobs:
       
     - name: Build MAUI iOS project
       shell: bash
-      run: dotnet publish MauiApp1/MauiApp1.csproj -c Release -f:net8.0-ios -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64
+      run: dotnet publish MauiApp1/MauiApp1.csproj -c Release -f:net8.0-ios  --no-restore /p:buildForSimulator=True /p:packageApp=True /p:ArchiveOnBuild=False
     
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v4.3.0
