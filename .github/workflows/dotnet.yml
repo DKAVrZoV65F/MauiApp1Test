@@ -30,6 +30,11 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4.1.1
+    
+    - name: Setup Keystore File
+      run: |
+        echo "${{ secrets.ANDROID_KEYSTORE_FILE }}" > myapp.keystore.asc
+        gpg -d --passphrase "${{ secrets.ANDROID_PASSWORD_GPG }}" --batch myapp.keystore.asc > myapp.keystore
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4.0.0
@@ -49,13 +54,15 @@ jobs:
       run: dotnet restore MauiApp1/MauiApp1.csproj
 
     - name: Build MAUI Android
-      run: dotnet publish MauiApp1/MauiApp1.csproj -f net8.0-android -c Release --no-restore
+      run: dotnet publish MauiApp1/MauiApp1.csproj -f net8.0-android -c Release /p:AndroidSigningKeyStore=myapp.keystore /p:AndroidSigningKeyAlias=ghactionskey /p:AndroidSigningKeyPass="${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" /p:AndroidSigningStorePass="${{ secrets.ANDROID_PASSWORD_ALIAS }}" --no-restore
 
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v4.3.0
       with:
         name: android-ci-build
-        path: MauiApp1/bin/Release/net8.0-android/*mauiapp1.a*
+        path: |
+          ./**/*.aab
+          ./**/*.apk
 
     
 # ***************************** #
