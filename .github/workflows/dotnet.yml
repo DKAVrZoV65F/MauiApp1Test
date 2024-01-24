@@ -54,7 +54,7 @@ jobs:
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v4.3.0
       with:
-        name: MauiApp1-android-ci-build
+        name: android-ci-build
         path: MauiApp1/bin/Release/net8.0-android/*mauiapp1.a*
 
     
@@ -91,7 +91,7 @@ jobs:
     - name: Upload Windows Artifact
       uses: actions/upload-artifact@v4.3.0
       with:
-        name: MauiApp1-windows-ci-build
+        name: windows-ci-build
         path: .\**\AppPackages\**\*.*
 
 # ************************* #
@@ -112,10 +112,13 @@ jobs:
     
     - name: Restore Dependencies
       run: dotnet restore MauiApp1/MauiApp1.csproj
-      
-    - name: Build MAUI iOS project
+
+    - name: Degub MAUI iOS project
       shell: bash
-      run: dotnet publish MauiApp1/MauiApp1.csproj -c Release -f:net8.0-ios  --no-restore /p:buildForSimulator=True /p:packageApp=True /p:ArchiveOnBuild=False
+      run: dotnet build -f net8.0-ios -c Debug /p:packageApp=False /p:buildForSimulator=True /p:ArchiveOnBuild=False
+    #- name: Build MAUI iOS project
+    #  shell: bash
+    #  run: dotnet publish MauiApp1/MauiApp1.csproj -c Release -f:net8.0-ios  --no-restore /p:buildForSimulator=True /p:packageApp=True /p:ArchiveOnBuild=False
     
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v4.3.0
