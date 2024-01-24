@@ -78,7 +78,7 @@ jobs:
       run: dotnet restore MauiApp1/MauiApp1.csproj
       
     - name: Build MAUI Windows
-      run: dotnet publish MauiApp1Test/MauiApp1.csproj -c Release -f:net8.0-windows10.0.19041.0 /p:GenerateAppxPackageOnBuild=true /p:AppxPackageSigningEnabled=true /p:PackageCertificateThumbprint="${{ secrets.WINDOWS_PFX_THUMBPRINT }}"
+      run: dotnet publish MauiApp1/MauiApp1.csproj -c Release -f:net8.0-windows10.0.19041.0 /p:GenerateAppxPackageOnBuild=true /p:AppxPackageSigningEnabled=true
 
     - name: Upload Windows Artifact
       uses: actions/upload-artifact@v4.3.0
@@ -107,7 +107,7 @@ jobs:
       
     - name: Build MAUI iOS project
       shell: bash
-      run: dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64
+      run: dotnet publish MauiApp1/MauiApp1.csproj -c Release -f:net8.0-ios -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64
     
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v4.3.0
