@@ -115,7 +115,7 @@ jobs:
 
     - name: Degub MAUI iOS project
       shell: bash
-      run: dotnet build -f net8.0-ios -c Debug /p:packageApp=False /p:buildForSimulator=True /p:ArchiveOnBuild=False
+      run: dotnet build -f net8.0-ios -c Debug /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
     #- name: Build MAUI iOS project
     #  shell: bash
     #  run: dotnet publish MauiApp1/MauiApp1.csproj -c Release -f:net8.0-ios  --no-restore /p:buildForSimulator=True /p:packageApp=True /p:ArchiveOnBuild=False
