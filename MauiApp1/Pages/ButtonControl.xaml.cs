@@ -43,7 +43,7 @@ public partial class ButtonControl : Frame
         propertyName: nameof(Text),
         returnType: typeof(string),
         declaringType: typeof(ButtonControl),
-        defaultValue: LocalizationResourceManager["PleaseWait"].ToString(),
+        defaultValue: "",
         defaultBindingMode: BindingMode.OneWay
         );
 

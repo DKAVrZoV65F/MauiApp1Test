@@ -77,6 +77,8 @@ public partial class SettingsPage : ContentPage
 
     private async void ghLb_Tapped(object sender, TappedEventArgs e) => await Launcher.OpenAsync("https://github.com/DKAVrZoV65F/MLFoodAnalyzer");
 
+    private async void policyLb_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new PolicyPage());
+
     private async void mailLb_Tapped(object sender, TappedEventArgs e)
     {
         await Clipboard.SetTextAsync("gw9ckwfsp@mozmail.com");

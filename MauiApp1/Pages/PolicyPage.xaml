@@ -58,18 +58,18 @@
     <Grid
         Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
         IgnoreSafeArea="True"
-        RowDefinitions="590,Auto,*,110,76">
+        RowDefinitions="{OnPlatform '590,Auto,*,110,76', Android='400,*,*,110,76'}">
 
-        <!-- Main Grid -->
+        <!-- Main Image -->
         <Image
             Grid.Row="0"
-            Grid.RowSpan="6"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
             Source="fruits.jpeg"
-            Background="Black"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
             IsVisible="{OnPlatform iOS='False', WinUI='False', MacCatalyst='False'}"/>
 
+        <!-- Main Grid -->
         <Grid
             Grid.Row="0"
             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
@@ -78,6 +78,7 @@
             Rotation="-10"
             Margin="-60,0"
             IsVisible="{OnPlatform Android='False'}">
+
 
             <!-- Coll View 1 -->
             <CollectionView
@@ -154,14 +155,20 @@
 
 
         <!-- Info -->
+        <!--FF5722-->
+        <!--F30A49-->
+        <!--DF7861-->
+
+        <!--9BA4B4-->
+        <!--A77979-->
         <ScrollView
             Grid.Row="1"
             Grid.RowSpan="2">
             <Label
                 Text="{Binding LocalizationResourceManager[Description], Mode=OneWay}"
                 FontFamily="RegularFont"
-                TextColor="#888888"
-                HorizontalTextAlignment="Center"
+                TextColor="#A77979"
+                HorizontalTextAlignment="Start"
                 HorizontalOptions="Center"
                 VerticalOptions="Start"
                 FontSize="18"
@@ -170,15 +177,18 @@
         </ScrollView>
 
 
-        <!--  -->
-        <StackLayout 
+        <!-- Agree with policy -->
+        <StackLayout
+            x:Name="stlPolicy"
             Grid.Row="3"
-            Padding="8"
+            Padding="32, 5, 8, 8"
             HorizontalOptions="Fill"
             VerticalOptions="Fill"
             Orientation="Horizontal">
-            <CheckBox CheckedChanged="CheckBox_CheckedChanged"/>
-            <Label FontSize="20" FontFamily="BoldFont" Margin="30" Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}" />
+            <CheckBox
+                Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                CheckedChanged="CheckBox_CheckedChanged"/>
+            <Label TextColor="#efefef" FontSize="20" FontFamily="BoldFont" Margin="0,35" Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}" />
         </StackLayout>
 
         <!-- Button -->
@@ -190,7 +200,7 @@
             VerticalOptions="Fill"
             Margin="32,0,32,24"
             FontSize="18"
-            TextColor="White"
+            TextColor="#efefef"
             FontFamily="BoldFont"
             BackgroundColor="#151515"
             Clicked="ImagePathClicked"

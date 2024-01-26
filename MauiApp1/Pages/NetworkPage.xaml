@@ -4,33 +4,38 @@
              x:Class="MauiApp1.Pages.NetworkPage"
              xmlns:extension="clr-namespace:MauiApp1.Extension"
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
-             xmlns:customControls="clr-namespace:MauiApp1.Pages">
+             xmlns:customControls="clr-namespace:MauiApp1.Pages"
+             BackgroundColor="Black">
 
     <Grid RowDefinitions="50, 50, 50, 50, 150"
           ColumnDefinitions="Auto, *"
-          Margin="10,40,20,0">
+          Margin="20,40,20,0">
 
         <Label
             Grid.Row = "0"
             Grid.ColumnSpan="2"
             FontSize="Title"
-            TextColor="Aqua"
+            TextColor="#F30A49"
             FontFamily="RegularFont"
-            Margin="0,-20,0,0"
+            Margin="0,-20"
             Text="{Binding LocalizationResourceManager[Network], Mode=OneWay}"/>
 
         <Label
             Grid.Row = "1"
             Grid.Column = "0"
+            TextColor="#efefef"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             FontFamily="BoldFont"
             FontSize="20"
             Text="{Binding LocalizationResourceManager[IPAddress], Mode=OneWay}"/>
         <Entry
+            Margin="10,0"
             x:Name="IpEntr"
+            TextColor="#efefef"
             Grid.Row = "1"
             Grid.Column = "1"
+            BackgroundColor="#151515"
             FontFamily="RegularFont"
             FontSize="20"
             Keyboard="Telephone"
@@ -40,14 +45,18 @@
         <Label
             Grid.Row = "2"
             Grid.Column = "0"
+            TextColor="#efefef"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             FontFamily="BoldFont"
             FontSize="20"
             Text="{Binding LocalizationResourceManager[Port], Mode=OneWay}"/>
         <Entry
+            Margin="10,0"
             x:Name="PortEntr"
             Grid.Row = "2"
+            TextColor="#efefef"
+            BackgroundColor="#151515"
             FontFamily="RegularFont"
             FontSize="20"
             Grid.Column = "1"
@@ -58,14 +67,18 @@
         <Label
             Grid.Row = "3"
             Grid.Column = "0"
+            TextColor="#efefef"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             FontFamily="BoldFont"
             FontSize="20"
             Text="{Binding LocalizationResourceManager[Password], Mode=OneWay}"/>
         <Entry
+            Margin="10,0"
             x:Name="PasswordEntr"
             IsPassword="True"
+            TextColor="#efefef"
+            BackgroundColor="#151515"
             Placeholder="{Binding LocalizationResourceManager[EnterThePassword], Mode=OneWay}"
             Grid.Row = "3"
             FontFamily="RegularFont"
@@ -79,7 +92,7 @@
             Grid.ColumnSpan="2"
             Text="{Binding LocalizationResourceManager[CheckTheConnection], Mode=OneWay}"
             CornerRadius="26"
-            Margin="40"
+            Margin="-10,40"
             Tapped="PingServer"
             BackgroundColor="#151515"/>
 

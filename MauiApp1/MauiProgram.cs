@@ -13,8 +13,8 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("AtypDisplay-Bold.ttf", "BoldFont");
-                fonts.AddFont("AtypDisplay-Regular.ttf", "RegularFont");
+                fonts.AddFont("Carlito-Bold.ttf", "BoldFont");
+                fonts.AddFont("Carlito-Regular.ttf", "RegularFont");
             })
 
             .Services.AddSingleton<MainPage>();

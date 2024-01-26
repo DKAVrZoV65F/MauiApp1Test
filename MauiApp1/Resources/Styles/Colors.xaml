@@ -45,6 +45,6 @@
 
 
 
-
+    <Color x:Key="White100">#efefef</Color>
     <Color x:Key="Gray970">#151515</Color>
 </ResourceDictionary>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.Pages.SettingsPage">
+             x:Class="MauiApp1.Pages.SettingsPage"
+             Background="#151515">
 
-    <Grid RowDefinitions="50, *, 10, *, 10, *, 50, 50, *, 10, *, Auto"
+    <Grid RowDefinitions="50, *, 10, *, 10, *, 50, 50, *, 10, *, 10, *, 50"
         ColumnDefinitions="*, Auto"
         Margin="-10,0,-10,0">
 
@@ -11,17 +12,18 @@
             Grid.Row="0"
             Grid.ColumnSpan="2"
             FontSize="Title"
-            TextColor="Blue"
+            TextColor="#F30A49"
             FontFamily="RegularFont"
             Text="{Binding LocalizationResourceManager[Settings], Mode=OneWay}"
-            Padding="20,10,0,0"/>
+            Padding="20,20,0,0"/>
         <Label
             Grid.Row="1"
             Grid.ColumnSpan="2"
+            TextColor="#efefef"
             FontSize="20"
             Text="{Binding LocalizationResourceManager[ChatSettings], Mode=OneWay}"
             FontFamily="RegularFont"
-            Padding="40,50,20,0">
+            Padding="40,30,20,10">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="themeLb_Tapped" />
             </Label.GestureRecognizers>
@@ -33,9 +35,10 @@
             Grid.Row="3"
             Grid.ColumnSpan="2"
             FontSize="20"
+            TextColor="#efefef"
             Text="{Binding LocalizationResourceManager[Network], Mode=OneWay}"
             FontFamily="RegularFont"
-            Padding="40,50,20,0">
+            Padding="40,30,20,10">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="networkLb_Tapped"/>
             </Label.GestureRecognizers>
@@ -45,22 +48,23 @@
             Grid.Row="5"
             Grid.Column="0"
             FontSize="20"
+            TextColor="#efefef"
             Text="{Binding LocalizationResourceManager[Language], Mode=OneWay}"
             FontFamily="RegularFont"
-            Padding="40,50,20,0">
+            Padding="40,40,20,10">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="languageLb_Tapped" />
             </Label.GestureRecognizers>
         </Label>
         <Label
             x:Name="LanguageLb"
-            TextColor="Aqua"
+            TextColor="#FF7E67"
             Grid.Row="5"
             Grid.Column="1"
             FontSize="20"
             Text=""
             FontFamily="RegularFont"
-            Padding="40,50,20,0">
+            Padding="40,40,40,10">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="languageLb_Tapped" />
             </Label.GestureRecognizers>
@@ -74,45 +78,65 @@
             Grid.ColumnSpan="2"
             FontSize="Title"
             FontFamily="RegularFont"
-            TextColor="Blue"
+            TextColor="#F30A49"
             Text="{Binding LocalizationResourceManager[Help], Mode=OneWay}"
-            Padding="20,10,0,0"/>
-        
-        
+            Padding="20, 0, 0, 0"/>
+
+
         <Label
+            TextColor="#efefef"
             Grid.Row="8"
             Grid.ColumnSpan="2"
             FontSize="20"
             Text="GitHub"
             FontFamily="RegularFont"
-            Padding="40,50,20,0">
+            Padding="40,30,20,10">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="ghLb_Tapped" />
             </Label.GestureRecognizers>
         </Label>
         <BoxView Grid.Row="9" Grid.ColumnSpan="2" HeightRequest="2" Color="Black" Margin="40,0,0,0" />
-        
+
         <Label
+            TextColor="#efefef"
             Grid.Row="10"
             Grid.ColumnSpan="2"
             FontSize="20"
             Text="{Binding LocalizationResourceManager[Mail], Mode=OneWay}"
             FontFamily="RegularFont"
-            Padding="40,50,20,0">
+            Padding="40,30,20,10">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="mailLb_Tapped" />
             </Label.GestureRecognizers>
         </Label>
+        <BoxView Grid.Row="11" Grid.ColumnSpan="2" HeightRequest="2" Color="Black" Margin="40,0,0,0" />
 
         <Label
+            Grid.Row="12"
+            Grid.ColumnSpan="2"
+            TextColor="#efefef"
+            FontSize="20"
+            Text="{Binding LocalizationResourceManager[Policy], Mode=OneWay}"
+            FontFamily="RegularFont"
+            Padding="40,30,20,10">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="policyLb_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <!--FF5722-->
+        <!--F30A49-->
+        <!--DF7861-->
+        <!--9BA4B4-->
+        <!--A77979-->
+        <Label
             x:Name="AppVersionLB"
-            Grid.Row="11"
+            Grid.Row="13"
             Grid.ColumnSpan="2"
             Text=""
             FontFamily="BoldFont"
-            HeightRequest="50"
             Background="Black"
-            TextColor="Gray"
+            TextColor="#9BA4B4"
             VerticalOptions="Fill" 
             HorizontalOptions="Fill" 
             Padding="40,20,0,0">

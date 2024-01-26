@@ -120,6 +120,9 @@
   <data name="Accept" xml:space="preserve">
     <value>Accept</value>
   </data>
+  <data name="AcceptSettings" xml:space="preserve">
+    <value>Accept settings</value>
+  </data>
   <data name="Administration" xml:space="preserve">
     <value>Administration</value>
   </data>
@@ -132,8 +135,14 @@
   <data name="CheckTheConnection" xml:space="preserve">
     <value>Check the connection</value>
   </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Dark theme</value>
+  </data>
+  <data name="DefaultTheme" xml:space="preserve">
+    <value>Default theme</value>
+  </data>
   <data name="Description" xml:space="preserve">
-    <value>In common language usage, fruit normally means the seed-associated fleshy structures.</value>
+    <value>In common language usage, fruit normally means the seed-associated fleshy structures. Excepteur sint occaecat cupidatat non proident, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, sunt in culpa qui officia deserunt mollit anim id est laborum.</value>
   </data>
   <data name="DestHostUn" xml:space="preserve">
     <value>Destination Host Unreachable</value>
@@ -153,6 +162,9 @@
   <data name="ErrorWithIPOrPort" xml:space="preserve">
     <value>Error With IP or port</value>
   </data>
+  <data name="ExampleText" xml:space="preserve">
+    <value>Cleaning robots using artificial intelligence can automatically identify and remove garbage, which greatly simplifies the cleaning process and reduces the likelihood of environmental pollution.</value>
+  </data>
   <data name="For" xml:space="preserve">
     <value>for</value>
   </data>
@@ -164,6 +176,9 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Light theme</value>
   </data>
   <data name="Mail" xml:space="preserve">
     <value>Mail</value>
@@ -185,6 +200,9 @@
   </data>
   <data name="PleaseWait" xml:space="preserve">
     <value>Please wait...</value>
+  </data>
+  <data name="Policy" xml:space="preserve">
+    <value>Privacy policy</value>
   </data>
   <data name="PolicyAccept" xml:space="preserve">
     <value>I read policy</value>

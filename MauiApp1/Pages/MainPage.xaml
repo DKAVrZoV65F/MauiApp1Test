@@ -4,7 +4,8 @@
              xmlns:extension="clr-namespace:MauiApp1.Extension"
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
              xmlns:customControls="clr-namespace:MauiApp1.Pages"
-             x:Class="MauiApp1.Pages.MainPage">
+             x:Class="MauiApp1.Pages.MainPage"
+             BackgroundColor="Black">
 
     <Grid RowDefinitions="100, *, 150"
         ColumnDefinitions="*, Auto">
@@ -14,36 +15,38 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             HorizontalTextAlignment="Center"
-            Margin="40"
-            Text="Danged!"
-            TextColor="Red"
+            Margin="0"
+            Text="Danger!"
+            FontSize="20"
+            TextColor="#F30A49"
             FontFamily="RegularFont"
             IsVisible="True"/>
 
-        <Border
+
+        <ScrollView
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Margin="40,0,20,0"
-            Stroke="Gray">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="20" />
-            </Border.StrokeShape>
-            <ScrollView>
-                <Editor
-                    Text=""
-                    IsReadOnly="True"
-                    x:Name="TextLabelTest"
-                    FontFamily="RegularFont"
-                    FontSize="20"/>
-            </ScrollView>
-        </Border>
+            BackgroundColor="#151515"
+            Margin="20,-40,20,0">
+            <Editor
+                Text=""
+                TextColor="#efefef"
+                IsReadOnly="True"
+                x:Name="TextLabelTest"
+                FontFamily="RegularFont"
+                FontSize="20">
+            </Editor>
+        </ScrollView>
 
 
+            <!-- Use soft shadow than border -->
         <Editor
+            TextColor="#efefef"
+            BackgroundColor="#151515"
             TextChanged="TextEntryTest_TextChanged"
             Text=""
-            Margin="40"
+            Margin="20,40,0,40"
             Grid.Row="2"
             Grid.Column="0"
             x:Name="TextEntryTest"
@@ -52,17 +55,25 @@
             FontFamily="RegularFont"
             IsSpellCheckEnabled="True"
             IsTextPredictionEnabled="True"
-            Placeholder="{Binding LocalizationResourceManager[EnterTheText], Mode=OneWay}"/>
+            Placeholder="{Binding LocalizationResourceManager[EnterTheText], Mode=OneWay}">
+            <Editor.Shadow>
+                <Shadow Brush="#151515"
+                        Radius="40"
+                        Opacity="0.8"/>
+            </Editor.Shadow>
+        </Editor>
 
-        <customControls:ButtonControl 
+        <customControls:ButtonControl
+            Background="#151515"
             x:Name="btnPicture"
             Text="{Binding LocalizationResourceManager[SendPicture], Mode=OneWay}"
             Grid.Row="2"
             Grid.Column="2"
-            Margin="40"
+            Margin="20,40,20,40"
             CornerRadius="26"
             BackgroundColor="#151515"
             Tapped="btnPicture_Tapped"
+            LoadingText="{Binding LocalizationResourceManager[PleaseWait], Mode=OneWay}"
             IsVisible="True"/>
 
         <customControls:ButtonControl 
@@ -71,9 +82,10 @@
             Grid.Row="2"
             Grid.Column="2"
             CornerRadius="26"
-            Margin="40"
+            Margin="20,40,20,40"
             BackgroundColor="#151515"
             Tapped="btnText_Tapped"
+            LoadingText="{Binding LocalizationResourceManager[PleaseWait], Mode=OneWay}"
             IsVisible="False"/>
         
     </Grid>
