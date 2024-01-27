@@ -15,9 +15,15 @@ public partial class MainPage : ContentPage
 
     public MainPage()
     {
+        bool IsPolicyRead = Preferences.Get("IsPolicyRead", true);
+        if (IsPolicyRead) GoToPolicy();
+
         InitializeComponent();
 
-        if (true) GoToPolicy();
+        int getValue = Preferences.Get("FontSize", 20);
+        InfoLb.FontSize = getValue;
+        TextLabelTest.FontSize = getValue;
+        TextEntryTest.FontSize = getValue;
     }
 
     private async void GoToPolicy() => await Navigation.PushModalAsync(new PolicyPage());
@@ -148,6 +154,4 @@ public partial class MainPage : ContentPage
         localFileStream.Close();
         return localFilePath;
     }
-
-
 }

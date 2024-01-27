@@ -16,17 +16,17 @@
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="{Binding LocalizationResourceManager[MLModel], Mode=OneWay}" FlyoutIcon="AI.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[MLModel], Mode=OneWay}" FlyoutIcon="ai_page.png">
         <ShellContent
             ContentTemplate="{DataTemplate local:MainPage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="{Binding LocalizationResourceManager[Settings], Mode=OneWay}" Icon="Settings.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[Settings], Mode=OneWay}" Icon="settings_page.png">
         <ShellContent
             ContentTemplate="{DataTemplate local:SettingsPage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="{Binding LocalizationResourceManager[Administration], Mode=OneWay}" Icon="code1_bot.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[Administration], Mode=OneWay}" Icon="profile_security_page.png">
         <ShellContent
             x:Name="AdminPanel"
             ContentTemplate="{DataTemplate local:AdminStoragePage}"/>

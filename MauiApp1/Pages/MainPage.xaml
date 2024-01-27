@@ -5,12 +5,13 @@
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
              xmlns:customControls="clr-namespace:MauiApp1.Pages"
              x:Class="MauiApp1.Pages.MainPage"
-             BackgroundColor="Black">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}">
 
     <Grid RowDefinitions="100, *, 150"
         ColumnDefinitions="*, Auto">
 
         <Label
+            x:Name="InfoLb"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
@@ -18,7 +19,7 @@
             Margin="0"
             Text="Danger!"
             FontSize="20"
-            TextColor="#F30A49"
+            TextColor="#FF7E67"
             FontFamily="RegularFont"
             IsVisible="True"/>
 
@@ -27,7 +28,7 @@
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            BackgroundColor="#151515"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
             Margin="20,-40,20,0">
             <Editor
                 Text=""
@@ -40,7 +41,7 @@
         </ScrollView>
 
 
-            <!-- Use soft shadow than border -->
+        <!-- Use soft shadow than border -->
         <Editor
             TextColor="#efefef"
             BackgroundColor="#151515"

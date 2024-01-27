@@ -12,6 +12,7 @@
           Margin="20,40,20,0">
 
         <Label
+            x:Name="TitleLb"
             Grid.Row = "0"
             Grid.ColumnSpan="2"
             FontSize="Title"
@@ -21,6 +22,7 @@
             Text="{Binding LocalizationResourceManager[Network], Mode=OneWay}"/>
 
         <Label
+            x:Name="IpLb"
             Grid.Row = "1"
             Grid.Column = "0"
             TextColor="#efefef"
@@ -43,6 +45,7 @@
             Text=""/>
 
         <Label
+            x:Name="PortLb"
             Grid.Row = "2"
             Grid.Column = "0"
             TextColor="#efefef"
@@ -65,6 +68,7 @@
             Text=""/>
 
         <Label
+            x:Name="PasswordLb"
             Grid.Row = "3"
             Grid.Column = "0"
             TextColor="#efefef"

@@ -64,6 +64,7 @@ public partial class ButtonControl : Frame
     private static void IsInProgressPropertyChanged(BindableObject bindable, object oldValue, object newValue)
     {
         var controls = (ButtonControl)bindable;
+        controls.lblButtonText.FontSize = Preferences.Get("FontSize", 20) - 5;
         if (newValue != null)
         {
             bool isInProgress = (bool)newValue;

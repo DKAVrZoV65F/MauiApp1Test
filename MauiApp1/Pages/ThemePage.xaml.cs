@@ -6,26 +6,40 @@ public partial class ThemePage : ContentPage
 {
     public LocalizationResourceManager LocalizationResourceManager
        => LocalizationResourceManager.Instance;
+    private int oldValue = 20;
+
     public ThemePage()
     {
         InitializeComponent();
 
-        DefaultRb.IsChecked = true;
-        /*switch (currentCulture.Name)
+        string getTheme = Preferences.Get("ThemeApp", "Default");
+        switch (getTheme)
         {
-            case "ru-RU":
-                RussianRb.IsChecked = true;
+            case "Light":
+                LightRb.IsChecked = true;
                 break;
-            case "en-US":
-                EnglishRb.IsChecked = true;
+            case "Dark":
+                DarkRb.IsChecked = true;
                 break;
             default:
-                RussianRb.IsChecked = true;
+                DefaultRb.IsChecked = true;
                 break;
-        }*/
+        }
+
+        int getValue = Preferences.Get("FontSize", oldValue);
+        fontSizeSl.Value = getValue;
+        oldValue = getValue;
+        ExampleLabel.FontSize = getValue;
+
+
+        TitleLb.FontSize = getValue + 5;
+        btnAccept.FontSize = getValue;
+        LightRb.FontSize = getValue;
+        DarkRb.FontSize = getValue;
+        DefaultRb.FontSize = getValue;
     }
 
-    void OnThemeCheckedChanged(object sender, CheckedChangedEventArgs e)
+    private void OnThemeCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
         RadioButton selectedRadioButton = ((RadioButton)sender);
         string? checkBoxValue = (selectedRadioButton.Value != null) ? selectedRadioButton.Value.ToString() : "";
@@ -43,20 +57,20 @@ public partial class ThemePage : ContentPage
                 Application.Current.UserAppTheme = AppTheme.Unspecified;
                 break;
         }
+        Preferences.Set("ThemeApp", checkBoxValue);
     }
 
-    void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+    private void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
     {
-        btnAccept.IsEnabled = true;
         int value = (int)e.NewValue;
         ExampleLabel.FontSize = value;
-        //header.FontSize = value;
         header.Text = value.ToString();
+        if (value != oldValue) oldValue = value;
     }
 
     private async void SettingsClicked(object sender, EventArgs e)
     {
-
+        Preferences.Set("FontSize", oldValue);
         await DisplayAlert(LocalizationResourceManager["AppName"].ToString(), LocalizationResourceManager["ReloadApp"].ToString(), "OK");
     }
 }

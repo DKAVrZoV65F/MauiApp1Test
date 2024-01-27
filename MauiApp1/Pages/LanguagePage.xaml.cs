@@ -12,9 +12,13 @@ public partial class LanguagePage : ContentPage
     {
         InitializeComponent();
 
-        CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
-        LocalizationResourceManager.Instance.SetCulture(currentCulture);
-        switch (currentCulture.Name)
+        int getValue = Preferences.Get("FontSize", 20);
+        TitleLb.FontSize = getValue + 5;
+        RussianRb.FontSize = getValue;
+        EnglishRb.FontSize = getValue;
+
+        string currentLanguage = Preferences.Get("LanguageApp", "ru-RU");
+        switch (currentLanguage)
         {
             case "ru-RU":
                 RussianRb.IsChecked = true;
@@ -36,5 +40,6 @@ public partial class LanguagePage : ContentPage
 
         CultureInfo cultureInfo = new CultureInfo(checkBoxValue);
         LocalizationResourceManager.Instance.SetCulture(cultureInfo);
+        Preferences.Set("LanguageApp", checkBoxValue);
     }
 }

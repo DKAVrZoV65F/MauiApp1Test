@@ -1,4 +1,5 @@
 ﻿using MauiApp1.Extension;
+using Microsoft.Maui;
 
 namespace MauiApp1.Pages;
 
@@ -9,6 +10,7 @@ public partial class PolicyPage : ContentPage
 
     private List<string> _allImages = [];
     private Random _random = new();
+    private bool IsPolicyRead = true;
 
     public List<string> ImageList1 { get; set; }
     public List<string> ImageList2 { get; set; }
@@ -18,6 +20,17 @@ public partial class PolicyPage : ContentPage
     public PolicyPage()
     {
         InitializeComponent();
+
+        int getValue = Preferences.Get("FontSize", 20);
+        PolicyLb.FontSize = getValue;
+        policyLb.FontSize = getValue;
+        btnAccept.FontSize = getValue;
+
+        IsPolicyRead = Preferences.Get("IsPolicyRead", true);
+        policyLb.IsEnabled = IsPolicyRead;
+        AgreeCb.IsEnabled = IsPolicyRead;
+        AgreeCb.IsChecked = !IsPolicyRead;
+        btnAccept.IsEnabled = IsPolicyRead;
 
         GenerateData();
 
@@ -44,8 +57,12 @@ public partial class PolicyPage : ContentPage
 
     private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e) => btnAccept.IsEnabled = e.Value;
 
-    public async void ImagePathClicked(object sender, EventArgs e) => await Navigation.PopModalAsync();
-    
+    public async void ImagePathClicked(object sender, EventArgs e)
+    {
+        Preferences.Set("IsPolicyRead", false);
+        await Navigation.PopModalAsync();
+    }
+
     /*await DisplayAlert(Title, LocalizationResourceManager["ErrorWithAlgorithm"].ToString(), "ОK");
         string result = await DisplayActionSheet(LocalizationResourceManager["AppInfo"].ToString(), LocalizationResourceManager["Thanks"].ToString(), "GitHub", LocalizationResourceManager["Version"].ToString() + $" {AppInfo.Current.VersionString}", LocalizationResourceManager["Language"].ToString() + $"  {currentLanguage}", LocalizationResourceManager["Author"].ToString());
 

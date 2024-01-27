@@ -6,11 +6,12 @@
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
              BackgroundColor="Black">
 
-    <Grid RowDefinitions="50, Auto, *, 50, 50, 50, 76"
+    <Grid RowDefinitions="50, Auto, *, 76, 50, 50, 50"
           ColumnDefinitions="*, 50"
           Margin="20,40,20,0">
 
         <Label
+            x:Name="TitleLb"
             Grid.Row = "0"
             Grid.ColumnSpan="2"
             FontSize="Title"
@@ -21,7 +22,7 @@
 
 
         
-        <Slider Margin="0, 0, 20, 10" Grid.Row="1" Grid.Column="0" Minimum ="10" Maximum="40" Value="20" ValueChanged="OnSliderValueChanged"
+        <Slider x:Name="fontSizeSl" Margin="0, 0, 20, 10" Grid.Row="1" Grid.Column="0" Minimum ="10" Maximum="30" Value="20" ValueChanged="OnSliderValueChanged"
                 MinimumTrackColor="#efefef" MaximumTrackColor="#efefef" ThumbColor="#efefef" />
         <Label Margin="0,0, 0, 20" Grid.Row="1" Grid.Column="1" x:Name="header" Text="20" FontFamily="RegularFont" TextColor="#efefef" FontSize="20" />
 
@@ -35,46 +36,11 @@
                 FontFamily="RegularFont"
                 Padding="10,40,20,10"/>
         </ScrollView>
-        
-
-
-        <RadioButton
-            x:Name="LightRb"
-            TextColor="#efefef"
-            FontSize="20"
-            Grid.ColumnSpan="2"
-            Grid.Row="3"
-            Content="{Binding LocalizationResourceManager[LightTheme], Mode=OneWay}"
-            FontFamily="RegularFont"
-            Value="Light"
-            CheckedChanged="OnThemeCheckedChanged" />
-
-        <RadioButton
-            x:Name="DarkRb"
-            TextColor="#efefef"
-            Grid.ColumnSpan="2"
-            Grid.Row="4"
-            FontSize="20"
-            FontFamily="RegularFont"
-            Content="{Binding LocalizationResourceManager[DarkTheme], Mode=OneWay}"
-            Value="Dark"
-            CheckedChanged="OnThemeCheckedChanged" />
-
-        <RadioButton
-            x:Name="DefaultRb"
-            TextColor="#efefef"
-            Grid.Row="5"
-            Grid.ColumnSpan="2"
-            FontSize="20"
-            FontFamily="RegularFont"
-            Content="{Binding LocalizationResourceManager[DefaultTheme], Mode=OneWay}"
-            Value="Default"
-            CheckedChanged="OnThemeCheckedChanged" />
 
         <!-- Button -->
         <Button
             x:Name="btnAccept"
-            Grid.Row="6"
+            Grid.Row="3"
             Text="{Binding LocalizationResourceManager[AcceptSettings], Mode=OneWay}"
             HorizontalOptions="Fill"
             VerticalOptions="Fill"
@@ -86,8 +52,42 @@
             BackgroundColor="#151515"
             Clicked="SettingsClicked"
             BorderWidth="0"
-            CornerRadius="26"
-            IsEnabled="False"/>
+            CornerRadius="26"/>
+
+        <RadioButton
+            x:Name="LightRb"
+            TextColor="#efefef"
+            FontSize="20"
+            Grid.ColumnSpan="2"
+            Grid.Row="4"
+            Content="{Binding LocalizationResourceManager[LightTheme], Mode=OneWay}"
+            FontFamily="RegularFont"
+            Value="Light"
+            CheckedChanged="OnThemeCheckedChanged" />
+
+        <RadioButton
+            x:Name="DarkRb"
+            TextColor="#efefef"
+            Grid.ColumnSpan="2"
+            Grid.Row="5"
+            FontSize="20"
+            FontFamily="RegularFont"
+            Content="{Binding LocalizationResourceManager[DarkTheme], Mode=OneWay}"
+            Value="Dark"
+            CheckedChanged="OnThemeCheckedChanged" />
+
+        <RadioButton
+            x:Name="DefaultRb"
+            TextColor="#efefef"
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            FontSize="20"
+            FontFamily="RegularFont"
+            Content="{Binding LocalizationResourceManager[DefaultTheme], Mode=OneWay}"
+            Value="Default"
+            CheckedChanged="OnThemeCheckedChanged" />
+
+        
 
     </Grid>
 </ContentPage>

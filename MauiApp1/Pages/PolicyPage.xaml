@@ -165,6 +165,7 @@
             Grid.Row="1"
             Grid.RowSpan="2">
             <Label
+                x:Name="PolicyLb"
                 Text="{Binding LocalizationResourceManager[Description], Mode=OneWay}"
                 FontFamily="RegularFont"
                 TextColor="#A77979"
@@ -179,16 +180,16 @@
 
         <!-- Agree with policy -->
         <StackLayout
-            x:Name="stlPolicy"
             Grid.Row="3"
             Padding="32, 5, 8, 8"
             HorizontalOptions="Fill"
             VerticalOptions="Fill"
             Orientation="Horizontal">
             <CheckBox
+                x:Name="AgreeCb"
                 Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                 CheckedChanged="CheckBox_CheckedChanged"/>
-            <Label TextColor="#efefef" FontSize="20" FontFamily="BoldFont" Margin="0,35" Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}" />
+            <Label x:Name="policyLb" TextColor="#efefef" FontSize="20" FontFamily="BoldFont" Margin="0,35" Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}" />
         </StackLayout>
 
         <!-- Button -->

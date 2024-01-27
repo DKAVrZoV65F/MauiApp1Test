@@ -4,13 +4,14 @@
              x:Class="MauiApp1.Pages.LanguagePage"
              xmlns:extension="clr-namespace:MauiApp1.Extension"
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
-             BackgroundColor="Black">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}">
 
     <Grid RowDefinitions="50, 50, 50"
         ColumnDefinitions="*"
         Margin="20,40,20,0">
 
         <Label
+            x:Name="TitleLb"
             Grid.Row="0"
             FontSize="Title"
             TextColor="#F30A49"
@@ -19,7 +20,7 @@
 
         <RadioButton
             x:Name="RussianRb"
-            TextColor="#efefef"
+            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
             FontSize="20"
             Grid.Row="1"
             Content="Русский" 
@@ -29,7 +30,7 @@
 
         <RadioButton
             x:Name="EnglishRb"
-            TextColor="#efefef"
+            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
             Grid.Row="2"
             FontSize="20"
             Content="English"

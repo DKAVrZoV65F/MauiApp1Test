@@ -8,8 +8,22 @@ public partial class NetworkPage : ContentPage
 {
     public LocalizationResourceManager LocalizationResourceManager
        => LocalizationResourceManager.Instance;
-    public NetworkPage() => InitializeComponent();
-    bool IsFlag = true;
+
+    private bool IsFlag = true;
+    public NetworkPage()
+    {
+        InitializeComponent();
+
+        int getValue = Preferences.Get("FontSize", 20);
+        TitleLb.FontSize = getValue + 5;
+        IpLb.FontSize = getValue;
+        IpEntr.FontSize = getValue;
+        PortLb.FontSize = getValue;
+        PortEntr.FontSize = getValue;
+        PasswordLb.FontSize = getValue;
+        PasswordEntr.FontSize = getValue;
+    }
+    
 
     private async void PingServer(object sender, EventArgs e)
     {
@@ -18,10 +32,8 @@ public partial class NetworkPage : ContentPage
         IsFlag = false;
         CheckIpAPort.IsInProgress = true;
 
-
         string ipAdress = IpEntr.Text;
-        int port = 0;
-        Int32.TryParse(PortEntr.Text, out port);
+        _ = int.TryParse(PortEntr.Text, out int port);
         if ((string.IsNullOrEmpty(ipAdress) || port == 0) || !IsValidIpAddress(ipAdress) || !IsValidPort(port))
         {
             IsFlag = true;

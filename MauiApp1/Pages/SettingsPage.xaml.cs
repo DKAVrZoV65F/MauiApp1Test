@@ -9,7 +9,7 @@ public partial class SettingsPage : ContentPage
        => LocalizationResourceManager.Instance;
 
     private int counter = 0;
-    private bool IsFlag = true;
+    private bool IsFlag = false;
 
     /*readonly string text = "Very long text! )";
     bool IsFlag = true;
@@ -57,6 +57,22 @@ public partial class SettingsPage : ContentPage
     public SettingsPage()
     {
         InitializeComponent();
+
+        int getValue = Preferences.Get("FontSize", 20);
+        TitleSetLb.FontSize = getValue + 5;
+        chatSettLb.FontSize = getValue;
+        networkLb.FontSize = getValue;
+        languageLb.FontSize = getValue;
+        currentLangLb.FontSize = getValue;
+        TitleHelpLb.FontSize = getValue + 5;
+        ghLb.FontSize = getValue;
+        mailLB.FontSize = getValue;
+        policyLB.FontSize = getValue;
+        AppVersionLB.FontSize = getValue - 5;
+
+
+
+        IsFlag = Preferences.Get("IsAdminPanel", false);
 #if ANDROID
         AppVersionLB.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " Android v0.1");
 #elif IOS
@@ -87,26 +103,24 @@ public partial class SettingsPage : ContentPage
 
     private async void secret_Tapped(object sender, TappedEventArgs e)
     {
-        if (counter > 5 && IsFlag)
+        if (IsFlag) return;
+        if (counter > 5)
         {
-            IsFlag = false;
+            Preferences.Set("IsAdminPanel", true);
+            IsFlag = true;
             await DisplayAlert(LocalizationResourceManager["AppName"].ToString(), LocalizationResourceManager["ReloadApp"].ToString(), "OK");
-            //Preferences.Set("IsAdminPanel", true);
         }
         else if (counter <= 5) counter++;
     }
 
     public async void UpdateTime()
     {
-        //int counter2 = 0;
         while(true)
         {
-            CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
+            string getLanguage = Preferences.Get("LanguageApp", "ru-RU");
+            CultureInfo currentCulture = new(getLanguage);
             string currentLanguage = currentCulture.DisplayName;
-            LanguageLb.Text = $"{currentLanguage[0].ToString().ToUpper()}{currentLanguage.Substring(1)}";
-            /*counter2++;
-            LanguageLb.Text = counter2.ToString();*/
-
+            currentLangLb.Text = $"{currentLanguage[0].ToString().ToUpper()}{currentLanguage.Substring(1)}";
             await Task.Delay(1000);
         }
     }
