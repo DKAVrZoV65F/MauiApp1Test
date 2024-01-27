@@ -47,4 +47,8 @@
 
     <Color x:Key="White100">#efefef</Color>
     <Color x:Key="Gray970">#151515</Color>
+
+    <Color x:Key="White200">#fefefe</Color>
+    <Color x:Key="White300">#eeeff1</Color>
+    <Color x:Key="White400">#eaeaee</Color>
 </ResourceDictionary>

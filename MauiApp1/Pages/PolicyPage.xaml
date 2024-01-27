@@ -189,7 +189,7 @@
                 x:Name="AgreeCb"
                 Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                 CheckedChanged="CheckBox_CheckedChanged"/>
-            <Label x:Name="policyLb" TextColor="#efefef" FontSize="20" FontFamily="BoldFont" Margin="0,35" Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}" />
+            <Label x:Name="policyLb" TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}" FontSize="20" FontFamily="BoldFont" Margin="0,35" Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}" />
         </StackLayout>
 
         <!-- Button -->
@@ -201,9 +201,9 @@
             VerticalOptions="Fill"
             Margin="32,0,32,24"
             FontSize="18"
-            TextColor="#efefef"
+            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
             FontFamily="BoldFont"
-            BackgroundColor="#151515"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
             Clicked="ImagePathClicked"
             BorderWidth="0"
             CornerRadius="26"

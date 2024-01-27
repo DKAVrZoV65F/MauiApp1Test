@@ -5,7 +5,7 @@
              xmlns:extension="clr-namespace:MauiApp1.Extension"
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
              xmlns:customControls="clr-namespace:MauiApp1.Pages"
-             BackgroundColor="Black">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}">
 
     <Grid RowDefinitions="50, 50, 50, 50, 150"
           ColumnDefinitions="Auto, *"
@@ -25,7 +25,7 @@
             x:Name="IpLb"
             Grid.Row = "1"
             Grid.Column = "0"
-            TextColor="#efefef"
+            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             FontFamily="BoldFont"
@@ -34,10 +34,10 @@
         <Entry
             Margin="10,0"
             x:Name="IpEntr"
-            TextColor="#efefef"
+            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
             Grid.Row = "1"
             Grid.Column = "1"
-            BackgroundColor="#151515"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
             FontFamily="RegularFont"
             FontSize="20"
             Keyboard="Telephone"
@@ -48,7 +48,7 @@
             x:Name="PortLb"
             Grid.Row = "2"
             Grid.Column = "0"
-            TextColor="#efefef"
+            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             FontFamily="BoldFont"
@@ -58,8 +58,8 @@
             Margin="10,0"
             x:Name="PortEntr"
             Grid.Row = "2"
-            TextColor="#efefef"
-            BackgroundColor="#151515"
+            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
             FontFamily="RegularFont"
             FontSize="20"
             Grid.Column = "1"
@@ -71,7 +71,7 @@
             x:Name="PasswordLb"
             Grid.Row = "3"
             Grid.Column = "0"
-            TextColor="#efefef"
+            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             FontFamily="BoldFont"
@@ -81,8 +81,8 @@
             Margin="10,0"
             x:Name="PasswordEntr"
             IsPassword="True"
-            TextColor="#efefef"
-            BackgroundColor="#151515"
+            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
             Placeholder="{Binding LocalizationResourceManager[EnterThePassword], Mode=OneWay}"
             Grid.Row = "3"
             FontFamily="RegularFont"
@@ -98,7 +98,7 @@
             CornerRadius="26"
             Margin="-10,40"
             Tapped="PingServer"
-            BackgroundColor="#151515"/>
+            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"/>
 
     </Grid>
 </ContentPage>

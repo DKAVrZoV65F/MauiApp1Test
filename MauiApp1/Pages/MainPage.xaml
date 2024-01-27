@@ -5,7 +5,7 @@
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
              xmlns:customControls="clr-namespace:MauiApp1.Pages"
              x:Class="MauiApp1.Pages.MainPage"
-             BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
 
     <Grid RowDefinitions="100, *, 150"
         ColumnDefinitions="*, Auto">
@@ -28,11 +28,11 @@
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}"
             Margin="20,-40,20,0">
             <Editor
                 Text=""
-                TextColor="#efefef"
+                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
                 IsReadOnly="True"
                 x:Name="TextLabelTest"
                 FontFamily="RegularFont"
@@ -43,8 +43,8 @@
 
         <!-- Use soft shadow than border -->
         <Editor
-            TextColor="#efefef"
-            BackgroundColor="#151515"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray970}}"
             TextChanged="TextEntryTest_TextChanged"
             Text=""
             Margin="20,40,0,40"
@@ -58,21 +58,20 @@
             IsTextPredictionEnabled="True"
             Placeholder="{Binding LocalizationResourceManager[EnterTheText], Mode=OneWay}">
             <Editor.Shadow>
-                <Shadow Brush="#151515"
+                <Shadow Brush="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource White100}}"
                         Radius="40"
-                        Opacity="0.8"/>
+                        Opacity="0.24"/>
             </Editor.Shadow>
         </Editor>
 
         <customControls:ButtonControl
-            Background="#151515"
             x:Name="btnPicture"
             Text="{Binding LocalizationResourceManager[SendPicture], Mode=OneWay}"
             Grid.Row="2"
             Grid.Column="2"
             Margin="20,40,20,40"
             CornerRadius="26"
-            BackgroundColor="#151515"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray970}}"
             Tapped="btnPicture_Tapped"
             LoadingText="{Binding LocalizationResourceManager[PleaseWait], Mode=OneWay}"
             IsVisible="True"/>
@@ -84,7 +83,7 @@
             Grid.Column="2"
             CornerRadius="26"
             Margin="20,40,20,40"
-            BackgroundColor="#151515"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
             Tapped="btnText_Tapped"
             LoadingText="{Binding LocalizationResourceManager[PleaseWait], Mode=OneWay}"
             IsVisible="False"/>
