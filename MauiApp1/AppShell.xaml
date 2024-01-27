@@ -26,7 +26,7 @@
             ContentTemplate="{DataTemplate local:SettingsPage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="{Binding LocalizationResourceManager[Administration], Mode=OneWay}" Icon="dotnet_bot.png">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[Administration], Mode=OneWay}" Icon="code1_bot.png">
         <ShellContent
             x:Name="AdminPanel"
             ContentTemplate="{DataTemplate local:AdminStoragePage}"/>
