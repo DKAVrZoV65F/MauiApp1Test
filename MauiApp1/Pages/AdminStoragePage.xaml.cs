@@ -10,43 +10,37 @@ public partial class AdminStoragePage : ContentPage
 
     public List<User> Users2 { get; set; }
     public ObservableCollection<User> Users { get; set; }
+    private ObservableCollection<User> Search { get; set; }
 
     public AdminStoragePage()
     {
         InitializeComponent();
-
-        Users2 = new List<User>
-        {
-            new User {Name="Tom", Id=1 },
-            new User {Name = "Bob", Id= 2},
-            new User {Name="Sam", Id = 3},
-            new User {Name = "Alice", Id = 4}
-        };
-
+        BindingContext = this; // привязка к текущему объекту
 
         Users = new ObservableCollection<User>
         {
-            new User {Name="Tom", Id=1 },
-            new User {Name = "Bob", Id = 2},
-            new User {Name="Sam", Id = 3},
-            new User {Name = "Alice", Id = 4 }
+            new User {Name="Tom", Id=1, Description = "Q" },
+            new User {Name = "Bob", Id = 2, Description = "W"},
+            new User {Name="Sam", Id = 3, Description = "E"},
+            new User {Name = "Alice", Id = 4, Description = "R" }
         };
-        BindingContext = this; // привязка к текущему объекту
-        User user = new("ADS", 5);
-        Users.Add(user);
-        usersListView.ItemsSource = Users;
+        
+        fruitsListView.ItemsSource = Users;
     }
 
-    private void UsersListView_ItemTapped(object sender, ItemTappedEventArgs e)
+    private async void FruitsListView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         var tappedUser = e.Item as User;
-        if (tappedUser != null)
-        {
-            User user = new(tappedUser.Name, Users.Count + 1);
-            Users.Add(user);
-            tappedItemHeader.Text = $"Count: {Users.Count}";
-        }
+        // go to editing
+        User user = new(tappedUser.Name, tappedUser.Id, tappedUser.Description);
+        await Navigation.PushAsync(new UpdatingStoragePage(user));
+    }
 
-        if(Users.Count > 15) usersListView.ItemsSource = Users2;
+    private void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        //search
+        Search = new(Users.Where(x => x.Name == SearchEntry.Text || x.Id.ToString() == SearchEntry.Text));
+
+        fruitsListView.ItemsSource = (Search.Count > 0) ? Search : Users;
     }
 }
