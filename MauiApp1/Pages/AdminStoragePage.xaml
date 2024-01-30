@@ -16,8 +16,8 @@
                     <ViewCell>
                         <ViewCell.View>
                             <StackLayout>
+                                <Label Text="{Binding Id}" FontSize="14" />
                                 <Label Text="{Binding Name}" FontSize="16" />
-                                <Label Text="{Binding Age}" FontSize="14" />
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>

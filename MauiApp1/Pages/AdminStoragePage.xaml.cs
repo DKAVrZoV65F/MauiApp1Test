@@ -8,22 +8,31 @@ public partial class AdminStoragePage : ContentPage
     public LocalizationResourceManager LocalizationResourceManager
        => LocalizationResourceManager.Instance;
 
-    //public List<User> Users { get; set; }
+    public List<User> Users2 { get; set; }
     public ObservableCollection<User> Users { get; set; }
 
     public AdminStoragePage()
     {
         InitializeComponent();
 
+        Users2 = new List<User>
+        {
+            new User {Name="Tom", Id=1 },
+            new User {Name = "Bob", Id= 2},
+            new User {Name="Sam", Id = 3},
+            new User {Name = "Alice", Id = 4}
+        };
+
+
         Users = new ObservableCollection<User>
         {
-            new User {Name="Tom", Age=38 },
-            new User {Name = "Bob", Age= 42},
-            new User {Name="Sam", Age = 28},
-            new User {Name = "Alice", Age = 33}
+            new User {Name="Tom", Id=1 },
+            new User {Name = "Bob", Id = 2},
+            new User {Name="Sam", Id = 3},
+            new User {Name = "Alice", Id = 4 }
         };
         BindingContext = this; // привязка к текущему объекту
-        User user = new("ADS", 123);
+        User user = new("ADS", 5);
         Users.Add(user);
         usersListView.ItemsSource = Users;
     }
@@ -33,11 +42,11 @@ public partial class AdminStoragePage : ContentPage
         var tappedUser = e.Item as User;
         if (tappedUser != null)
         {
-            //tappedItemHeader.Text = $"Pressed: {tappedUser.Name}";
-            tappedItemHeader.Text = $"Count: {Users.Count}";
-            User user = new(tappedUser.Name, tappedUser.Age);
+            User user = new(tappedUser.Name, Users.Count + 1);
             Users.Add(user);
-            usersListView.ItemsSource = Users;
+            tappedItemHeader.Text = $"Count: {Users.Count}";
         }
+
+        if(Users.Count > 15) usersListView.ItemsSource = Users2;
     }
 }

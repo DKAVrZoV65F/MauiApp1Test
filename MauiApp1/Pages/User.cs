@@ -9,9 +9,9 @@ public class User
     public User(string name, int age)
     {
         Name = name;
-        Age = age;
+        Id = age;
     }
 
     public string Name { get; set; } = "";
-    public int Age { get; set; }
+    public int Id { get; set; }
 }

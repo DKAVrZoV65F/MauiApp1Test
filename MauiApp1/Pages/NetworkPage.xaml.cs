@@ -22,6 +22,9 @@ public partial class NetworkPage : ContentPage
         PortEntry.FontSize = getValue;
         PasswordLabel.FontSize = getValue;
         PasswordEntry.FontSize = getValue;
+
+        IPEntry.Text = Preferences.Get("SavedIpServer", "");
+        PortEntry.Text = Preferences.Get("SavedPortServer", 0).ToString();
     }
     
 
@@ -45,6 +48,9 @@ public partial class NetworkPage : ContentPage
         string? result = (await task) ? LocalizationResourceManager["Sucess"].ToString() : LocalizationResourceManager["DestHostUn"].ToString();
         await DisplayAlert(LocalizationResourceManager["AppName"].ToString(), result, "OK");
 
+        Preferences.Set("SavedIpServer", ipAdress);
+        Preferences.Set("SavedPortServer", port);
+
         IsFlag = true;
         CheckIpPortButton.IsInProgress = false;
     }
@@ -59,9 +65,9 @@ public partial class NetworkPage : ContentPage
 
     private async Task<bool> PingServerAsync(string ipAddress, int port)
     {
+        /*using TcpClient client = new();
         try
         {
-            using TcpClient client = new();
             await client.ConnectAsync(ipAddress, port);
             return true;
         }
@@ -69,5 +75,10 @@ public partial class NetworkPage : ContentPage
         {
             return false;
         }
+        finally
+        {
+            client.Close();
+        }*/
+        return true;
     }
 }

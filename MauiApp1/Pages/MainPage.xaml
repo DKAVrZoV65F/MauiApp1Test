@@ -25,15 +25,14 @@
         <ScrollView
             Grid.Row="1"
             Grid.ColumnSpan="2"
-            Margin="20,-40,20,0"
+            VerticalScrollBarVisibility="Always"
+            Margin="20, -40, 20, 0"
             BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}">
-            <Editor
+            <Label
                 x:Name="ResultEditor"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
                 FontSize="20"
-                FontFamily="RegularFont"
-                IsReadOnly="True"/>
-
+                FontFamily="RegularFont"/>
         </ScrollView>
 
         <!-- Writing text to server -->
