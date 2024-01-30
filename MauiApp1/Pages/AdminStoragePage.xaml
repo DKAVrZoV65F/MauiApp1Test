@@ -3,20 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pages.AdminStoragePage"
              xmlns:extension="clr-namespace:MauiApp1.Extension"
+             xmlns:customControls="clr-namespace:MauiApp1.Pages"
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
-             BackgroundColor="Black">
+             xmlns:local="clr-namespace:MauiApp1.Pages"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
 
-    <Grid RowDefinitions="50, Auto, *, 50, 50, 50, 76"
-      ColumnDefinitions="*, 50"
-      Margin="20,40,20,0">
-
-        <Label
-            Grid.Row = "0"
-            Grid.ColumnSpan="2"
-            FontSize="Title"
-            TextColor="#F30A49"
-            FontFamily="RegularFont"
-            Margin="0,-20"
-            Text="{Binding LocalizationResourceManager[Administration], Mode=OneWay}"/>
-    </Grid>
+    <StackLayout Padding="7">
+        <Label x:Name="tappedItemHeader" FontSize="18"/>
+        <ListView x:Name="usersListView" ItemsSource="{Binding users}" ItemTapped="UsersListView_ItemTapped" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Label Text="{Binding Name}" FontSize="16" />
+                                <Label Text="{Binding Age}" FontSize="14" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

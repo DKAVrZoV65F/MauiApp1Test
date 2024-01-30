@@ -1,5 +1,4 @@
 ﻿using MauiApp1.Extension;
-using Microsoft.Maui;
 
 namespace MauiApp1.Pages;
 
@@ -22,15 +21,15 @@ public partial class PolicyPage : ContentPage
         InitializeComponent();
 
         int getValue = Preferences.Get("FontSize", 20);
-        PolicyLb.FontSize = getValue;
-        policyLb.FontSize = getValue;
-        btnAccept.FontSize = getValue;
+        PolicyLabel.FontSize = getValue;
+        InformationLabel.FontSize = getValue;
+        AcceptButton.FontSize = getValue;
 
         IsPolicyRead = Preferences.Get("IsPolicyRead", true);
-        policyLb.IsEnabled = IsPolicyRead;
-        AgreeCb.IsEnabled = IsPolicyRead;
-        AgreeCb.IsChecked = !IsPolicyRead;
-        btnAccept.IsEnabled = IsPolicyRead;
+        InformationLabel.IsEnabled = IsPolicyRead;
+        AgreeComboBox.IsEnabled = IsPolicyRead;
+        AgreeComboBox.IsChecked = !IsPolicyRead;
+        AcceptButton.IsEnabled = IsPolicyRead;
 
         GenerateData();
 
@@ -45,7 +44,7 @@ public partial class PolicyPage : ContentPage
     private void GenerateData()
     {
         //All Images
-        _allImages = new();
+        _allImages = [];
 
         for (var i = 1; i <= 18; i++)
         {
@@ -53,11 +52,11 @@ public partial class PolicyPage : ContentPage
         }
     }
 
-    public List<T> Randomize<T>(List<T> source) => [.. source.OrderBy((item) => _random.Next())];
+    private List<T> Randomize<T>(List<T> source) => [.. source.OrderBy((item) => _random.Next())];
 
-    private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e) => btnAccept.IsEnabled = e.Value;
+    private void Agree_Changed(object sender, CheckedChangedEventArgs e) => AcceptButton.IsEnabled = e.Value;
 
-    public async void ImagePathClicked(object sender, EventArgs e)
+    private async void Accept_Clicked(object sender, EventArgs e)
     {
         Preferences.Set("IsPolicyRead", false);
         await Navigation.PopModalAsync();

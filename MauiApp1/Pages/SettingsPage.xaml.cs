@@ -59,49 +59,49 @@ public partial class SettingsPage : ContentPage
         InitializeComponent();
 
         int getValue = Preferences.Get("FontSize", 20);
-        TitleSetLb.FontSize = getValue + 5;
-        chatSettLb.FontSize = getValue;
-        networkLb.FontSize = getValue;
-        languageLb.FontSize = getValue;
-        currentLangLb.FontSize = getValue;
-        TitleHelpLb.FontSize = getValue + 5;
-        ghLb.FontSize = getValue;
-        mailLB.FontSize = getValue;
-        policyLB.FontSize = getValue;
-        AppVersionLB.FontSize = getValue - 5;
+        SettingsLabel.FontSize = getValue + 5;
+        ChatSettingsLabel.FontSize = getValue;
+        NetworkLabel.FontSize = getValue;
+        LanguageLabel.FontSize = getValue;
+        CurrentLanguageLabel.FontSize = getValue;
+        HelpLabel.FontSize = getValue + 5;
+        GitHubLabel.FontSize = getValue;
+        MailLabel.FontSize = getValue;
+        PolicyLabel.FontSize = getValue;
+        AppVersionLabel.FontSize = getValue - 5;
 
 
 
         IsFlag = Preferences.Get("IsAdminPanel", false);
 #if ANDROID
-        AppVersionLB.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " Android v0.1");
+        AppVersionLabel.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " Android v0.1");
 #elif IOS
-        AppVersionLB.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " IOS v0.1");
+        AppVersionLabel.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " IOS v0.1");
 #elif MACCATALYST
-        AppVersionLB.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " Maccatalyst v0.1");
+        AppVersionLabel.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " Maccatalyst v0.1");
 #elif WINDOWS
-        AppVersionLB.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " Windows v0.1");
+        AppVersionLabel.Text = (LocalizationResourceManager["AppName"].ToString() + ' ' + LocalizationResourceManager["For"].ToString() + " Windows v0.1");
 #endif
         UpdateTime();
     }
 
-    private async void networkLb_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new NetworkPage());
+    private async void NetworkLabel_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new NetworkPage());
 
-    private async void languageLb_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new LanguagePage());
+    private async void LanguageLabel_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new LanguagePage());
 
-    private async void themeLb_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new ThemePage());
+    private async void ChatSettingsLabel_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new ThemePage());
 
-    private async void ghLb_Tapped(object sender, TappedEventArgs e) => await Launcher.OpenAsync("https://github.com/DKAVrZoV65F/MLFoodAnalyzer");
+    private async void GitHubLabel_Tapped(object sender, TappedEventArgs e) => await Launcher.OpenAsync("https://github.com/DKAVrZoV65F/MLFoodAnalyzer");
 
-    private async void policyLb_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new PolicyPage());
+    private async void PolicyLabel_Tapped(object sender, TappedEventArgs e) => await Navigation.PushAsync(new PolicyPage());
 
-    private async void mailLb_Tapped(object sender, TappedEventArgs e)
+    private async void MailLabel_Tapped(object sender, TappedEventArgs e)
     {
         await Clipboard.SetTextAsync("gw9ckwfsp@mozmail.com");
         await DisplayAlert(LocalizationResourceManager["AppName"].ToString(), LocalizationResourceManager["MailMessage"].ToString(), "OK");
     }
 
-    private async void secret_Tapped(object sender, TappedEventArgs e)
+    private async void Secret_Tapped(object sender, TappedEventArgs e)
     {
         if (IsFlag) return;
         if (counter > 5)
@@ -120,7 +120,7 @@ public partial class SettingsPage : ContentPage
             string getLanguage = Preferences.Get("LanguageApp", "ru-RU");
             CultureInfo currentCulture = new(getLanguage);
             string currentLanguage = currentCulture.DisplayName;
-            currentLangLb.Text = $"{currentLanguage[0].ToString().ToUpper()}{currentLanguage.Substring(1)}";
+            CurrentLanguageLabel.Text = $"{currentLanguage[0].ToString().ToUpper()}{currentLanguage[1..]}";
             await Task.Delay(1000);
         }
     }

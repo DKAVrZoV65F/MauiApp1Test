@@ -90,12 +90,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\AdminLogInPage.xaml.cs">
+	    <DependentUpon>AdminLogInPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\PolicyPage.xaml.cs">
 	    <DependentUpon>PolicyPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AdminLogInPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\AdminStoragePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -1,93 +1,90 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:extension="clr-namespace:MauiApp1.Extension"
-             xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
-             xmlns:customControls="clr-namespace:MauiApp1.Pages"
              x:Class="MauiApp1.Pages.MainPage"
+             xmlns:extension="clr-namespace:MauiApp1.Extension"
+             xmlns:customControls="clr-namespace:MauiApp1.Pages"
+             xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
              BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
 
     <Grid RowDefinitions="100, *, 150"
-        ColumnDefinitions="*, Auto">
+          ColumnDefinitions="*, Auto">
 
+        <!-- Information -->
         <Label
-            x:Name="InfoLb"
-            Grid.Row="0"
-            Grid.Column="0"
+            x:Name="InfoLabel"
             Grid.ColumnSpan="2"
-            HorizontalTextAlignment="Center"
-            Margin="0"
             Text="Danger!"
+            TextColor="{AppThemeBinding Light={StaticResource Red500}, Dark={StaticResource Red100}}"
+            HorizontalTextAlignment="Center"
             FontSize="20"
-            TextColor="#FF7E67"
             FontFamily="RegularFont"
             IsVisible="True"/>
 
-
+        <!-- Text from server -->
         <ScrollView
             Grid.Row="1"
-            Grid.Column="0"
             Grid.ColumnSpan="2"
-            BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}"
-            Margin="20,-40,20,0">
+            Margin="20,-40,20,0"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}">
             <Editor
-                Text=""
+                x:Name="ResultEditor"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-                IsReadOnly="True"
-                x:Name="TextLabelTest"
+                FontSize="20"
                 FontFamily="RegularFont"
-                FontSize="20">
-            </Editor>
+                IsReadOnly="True"/>
+
         </ScrollView>
 
-
-        <!-- Use soft shadow than border -->
+        <!-- Writing text to server -->
         <Editor
-            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray970}}"
-            TextChanged="TextEntryTest_TextChanged"
-            Text=""
-            Margin="20,40,0,40"
+            x:Name="QueryEditor"
             Grid.Row="2"
-            Grid.Column="0"
-            x:Name="TextEntryTest"
-            Keyboard="Text"
+            Margin="20,40,0,40"
+            Placeholder="{Binding LocalizationResourceManager[EnterTheText], Mode=OneWay}"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}"
             FontSize="20"
             FontFamily="RegularFont"
+            Keyboard="Text"
             IsSpellCheckEnabled="True"
             IsTextPredictionEnabled="True"
-            Placeholder="{Binding LocalizationResourceManager[EnterTheText], Mode=OneWay}">
+            TextChanged="QueryEditor_Changed">
             <Editor.Shadow>
-                <Shadow Brush="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource White100}}"
-                        Radius="40"
-                        Opacity="0.24"/>
+                <Shadow
+                    Brush="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource White100}}"
+                    Radius="40"
+                    Opacity="0.24"/>
             </Editor.Shadow>
+
         </Editor>
 
+        <!-- Send picture -->
         <customControls:ButtonControl
-            x:Name="btnPicture"
-            Text="{Binding LocalizationResourceManager[SendPicture], Mode=OneWay}"
+            x:Name="SendPictureButton"
             Grid.Row="2"
             Grid.Column="2"
             Margin="20,40,20,40"
-            CornerRadius="26"
-            BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray970}}"
-            Tapped="btnPicture_Tapped"
+            Text="{Binding LocalizationResourceManager[SendPicture], Mode=OneWay}"
             LoadingText="{Binding LocalizationResourceManager[PleaseWait], Mode=OneWay}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}"
+            Tapped="SendPicture_Tapped"
+            CornerRadius="26"
             IsVisible="True"/>
 
+        <!-- Send text -->
         <customControls:ButtonControl 
-            x:Name="btnText"
-            Text="{Binding LocalizationResourceManager[SendText], Mode=OneWay}"
+            x:Name="SendTextButton"
             Grid.Row="2"
             Grid.Column="2"
-            CornerRadius="26"
             Margin="20,40,20,40"
-            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
-            Tapped="btnText_Tapped"
+            Text="{Binding LocalizationResourceManager[SendText], Mode=OneWay}"
             LoadingText="{Binding LocalizationResourceManager[PleaseWait], Mode=OneWay}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}"
+            Tapped="SendText_Tapped"
+            CornerRadius="26"
             IsVisible="False"/>
-        
+
     </Grid>
 
 </ContentPage>

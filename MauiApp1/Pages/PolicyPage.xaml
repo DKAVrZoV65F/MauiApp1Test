@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.PolicyPage"
              xmlns:extension="clr-namespace:MauiApp1.Extension"
-             xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
-             x:Class="MauiApp1.Pages.PolicyPage">
-    
+             xmlns:strings="clr-namespace:MauiApp1.Resources.Strings">
+
     <ContentPage.Resources>
 
         <!-- Grid Styles -->
@@ -29,8 +29,8 @@
                 HeightRequest="137">
                 <Image.Clip>
                     <RoundRectangleGeometry
-                    Rect="0,0,137,137"
-                    CornerRadius="16" />
+                        Rect="0, 0, 137, 137"
+                        CornerRadius="16"/>
                 </Image.Clip>
             </Image>
         </DataTemplate>
@@ -56,127 +56,117 @@
     </ContentPage.Resources>
 
     <Grid
-        Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
         IgnoreSafeArea="True"
-        RowDefinitions="{OnPlatform '590,Auto,*,110,76', Android='400,*,*,110,76'}">
+        RowDefinitions="{OnPlatform '590,Auto,*,110,76', Android='400,*,*,110,76'}"
+        Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
 
         <!-- Main Image -->
         <Image
             Grid.Row="0"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill"
             Source="fruits.jpeg"
             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-            IsVisible="{OnPlatform iOS='False', WinUI='False', MacCatalyst='False'}"/>
+            IsVisible="{OnPlatform iOS='False', WinUI='False', MacCatalyst='False'}"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"/>
 
         <!-- Main Grid -->
         <Grid
             Grid.Row="0"
+            Margin="-60, 0"
             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
             IgnoreSafeArea="True"
-            RowDefinitions="137,14,137,14,137,14,137"
+            RowDefinitions="137, 14, 137, 14, 137, 14, 137"
             Rotation="-10"
-            Margin="-60,0"
             IsVisible="{OnPlatform Android='False'}">
-
 
             <!-- Coll View 1 -->
             <CollectionView
-                ItemsSource="{Binding ImageList1, Mode=OneWay}"
-                Grid.Row="0"/>
+                Grid.Row="0"
+                ItemsSource="{Binding ImageList1, Mode=OneWay}"/>
 
             <!-- Coll View 2 -->
             <CollectionView
-                ItemsSource="{Binding ImageList2, Mode=OneWay}"
-                Grid.Row="2"/>
+                Grid.Row="2"
+                ItemsSource="{Binding ImageList2, Mode=OneWay}" />
 
             <!-- Coll View 3 -->
             <CollectionView
-                ItemsSource="{Binding ImageList3, Mode=OneWay}"
-                Grid.Row="4"/>
+                Grid.Row="4"
+                ItemsSource="{Binding ImageList3, Mode=OneWay}"/>
 
             <!-- Coll View 4 -->
             <CollectionView
-                ItemsSource="{Binding ImageList4, Mode=OneWay}"
-                Grid.Row="6"/>
+                Grid.Row="6"
+                ItemsSource="{Binding ImageList4, Mode=OneWay}"/>
 
         </Grid>
 
         <!-- Top Gradient -->
         <BoxView
-            HorizontalOptions="Fill"
-            VerticalOptions="Start"
+            Grid.Row="0"
             HeightRequest="90"
-            Grid.Row="0">
+            HorizontalOptions="Fill"
+            VerticalOptions="Start">
             <BoxView.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" Offset="0.0"/>
-                    <GradientStop Color="Transparent" Offset="1.0"/>
+                <LinearGradientBrush
+                    StartPoint="0, 0"
+                    EndPoint="0, 1">
+                    <GradientStop
+                        Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+                        Offset="0.0"/>
+                    <GradientStop
+                        Color="Transparent"
+                        Offset="1.0"/>
                 </LinearGradientBrush>
-            </BoxView.Background>
-        </BoxView>
 
+            </BoxView.Background>
+
+        </BoxView>
 
         <!-- Bottom Gradient -->
         <BoxView
-            HorizontalOptions="Fill"
-            VerticalOptions="End"
+            Grid.Row="0"
             HeightRequest="90"
-            Grid.Row="0">
+            HorizontalOptions="Fill"
+            VerticalOptions="End">
             <BoxView.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" Offset="1.0"/>
-                    <GradientStop Color="Transparent" Offset="0.0"/>
+                <LinearGradientBrush
+                    StartPoint="0, 0"
+                    EndPoint="0, 1">
+                    <GradientStop
+                        Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+                        Offset="1.0"/>
+                    <GradientStop
+                        Color="Transparent"
+                        Offset="0.0"/>
                 </LinearGradientBrush>
             </BoxView.Background>
         </BoxView>
 
         <!-- Background -->
         <BoxView
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill"
             Grid.Row="1"
             Grid.RowSpan="3"
-            Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"/>
-
-        <!-- Header -->
-        <!--<Label
-            x:Name="test"
-            Grid.Row="1"
-            Text="{Binding LocalizationResourceManager[Welcome], Mode=OneWay}"
-            FontFamily="BoldFont"
-            TextColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource White}}"
-            HorizontalTextAlignment="Center"
-            HorizontalOptions="Center"
-            FontSize="28"
-            Margin="48,12,48,0"
-            LineHeight="1.2"/>
-        Margin="32,12,32,0"-->
-
+            Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"/>
 
         <!-- Info -->
-        <!--FF5722-->
-        <!--F30A49-->
-        <!--DF7861-->
-
-        <!--9BA4B4-->
-        <!--A77979-->
         <ScrollView
             Grid.Row="1"
             Grid.RowSpan="2">
             <Label
-                x:Name="PolicyLb"
+                x:Name="PolicyLabel"
+                Margin="48,12,48,0"
                 Text="{Binding LocalizationResourceManager[Description], Mode=OneWay}"
-                FontFamily="RegularFont"
                 TextColor="#A77979"
+                LineHeight="1.2"
+                FontSize="18"
+                FontFamily="RegularFont"
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="Center"
-                VerticalOptions="Start"
-                FontSize="18"
-                Margin="48,12,48,0"
-                LineHeight="1.2"/>
+                VerticalOptions="Start"/>
         </ScrollView>
-
 
         <!-- Agree with policy -->
         <StackLayout
@@ -186,28 +176,40 @@
             VerticalOptions="Fill"
             Orientation="Horizontal">
             <CheckBox
-                x:Name="AgreeCb"
+                x:Name="AgreeComboBox"
                 Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                CheckedChanged="CheckBox_CheckedChanged"/>
-            <Label x:Name="policyLb" TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}" FontSize="20" FontFamily="BoldFont" Margin="0,35" Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}" />
+                CheckedChanged="Agree_Changed"/>
+            <Label
+                x:Name="InformationLabel"
+                Margin="0, 35"
+                Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}"
+                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
+                FontSize="20"
+                FontFamily="BoldFont"/>
+
         </StackLayout>
 
         <!-- Button -->
         <Button
-            x:Name="btnAccept"
+            x:Name="AcceptButton"
             Grid.Row="4"
+            Margin="32, 0, 32, 24"
             Text="{Binding LocalizationResourceManager[Accept], Mode=OneWay}"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill"
-            Margin="32,0,32,24"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource Gray970}}"
             FontSize="18"
-            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
             FontFamily="BoldFont"
-            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
-            Clicked="ImagePathClicked"
-            BorderWidth="0"
+            Clicked="Accept_Clicked"
             CornerRadius="26"
-            IsEnabled="False"/>
+            IsEnabled="False"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"/>
 
     </Grid>
+    <!--FF5722-->
+    <!--F30A49-->
+    <!--DF7861-->
+
+    <!--9BA4B4-->
+    <!--A77979-->
 </ContentPage>

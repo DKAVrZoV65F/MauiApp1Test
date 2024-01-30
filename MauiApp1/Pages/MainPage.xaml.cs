@@ -21,71 +21,71 @@ public partial class MainPage : ContentPage
         InitializeComponent();
 
         int getValue = Preferences.Get("FontSize", 20);
-        InfoLb.FontSize = getValue;
-        TextLabelTest.FontSize = getValue;
-        TextEntryTest.FontSize = getValue;
+        InfoLabel.FontSize = getValue;
+        ResultEditor.FontSize = getValue;
+        QueryEditor.FontSize = getValue;
     }
 
     private async void GoToPolicy() => await Navigation.PushModalAsync(new PolicyPage());
 
-    private async void btnText_Tapped(object sender, EventArgs e)
+    private async void SendText_Tapped(object sender, EventArgs e)
     {
-        text = TextEntryTest.Text;
+        text = QueryEditor.Text;
         if (string.IsNullOrEmpty(text) || !IsFlag) return;
 
         IsFlag = false;
-        btnText.IsInProgress = true;
-        btnPicture.IsInProgress = true;
-        TextEntryTest.Text = "";
+        SendTextButton.IsInProgress = true;
+        SendPictureButton.IsInProgress = true;
+        QueryEditor.Text = "";
 
-        TextLabelTest.Text += "You: ";
+        ResultEditor.Text += "You: ";
         foreach (var item in text)
         {
-            TextLabelTest.Text += item;
+            ResultEditor.Text += item;
             await Task.Delay(rnd.Next(minValue, maxValue));
         }
-        TextLabelTest.Text += '\n';
+        ResultEditor.Text += '\n';
 
-        btnText.IsInProgress = false;
-        btnPicture.IsInProgress = false;
+        SendTextButton.IsInProgress = false;
+        SendPictureButton.IsInProgress = false;
         text = "";
         IsFlag = true;
     }
 
-    private void TextEntryTest_TextChanged(object sender, TextChangedEventArgs e)
+    private void QueryEditor_Changed(object sender, TextChangedEventArgs e)
     {
-        if (btnPicture == null || btnText == null) return;
+        if (SendPictureButton == null || SendTextButton == null) return;
 
-        btnPicture.IsVisible = string.IsNullOrEmpty(TextEntryTest.Text);
-        btnText.IsVisible = !string.IsNullOrEmpty(TextEntryTest.Text);
+        SendPictureButton.IsVisible = string.IsNullOrEmpty(QueryEditor.Text);
+        SendTextButton.IsVisible = !string.IsNullOrEmpty(QueryEditor.Text);
     }
 
-    private async void btnPicture_Tapped(object sender, EventArgs e)
+    private async void SendPicture_Tapped(object sender, EventArgs e)
     {
         if (!IsFlag) return;
 
         IsFlag = false;
-        btnText.IsInProgress = true;
-        btnPicture.IsInProgress = true;
+        SendTextButton.IsInProgress = true;
+        SendPictureButton.IsInProgress = true;
 
 
         string path = await GetPicturePath();
         if (string.IsNullOrEmpty(path))
         {
-            btnText.IsInProgress = false;
-            btnPicture.IsInProgress = false;
+            SendTextButton.IsInProgress = false;
+            SendPictureButton.IsInProgress = false;
             IsFlag = true;
             return;
         }
 
 
-        TextLabelTest.Text += "You pick a photo \" ";
+        ResultEditor.Text += "You pick a photo \" ";
         foreach (var item in path)
         {
-            TextLabelTest.Text += item;
+            ResultEditor.Text += item;
             await Task.Delay(rnd.Next(minValue, maxValue));
         }
-        TextLabelTest.Text += "\"\n";
+        ResultEditor.Text += "\"\n";
 
 
 
@@ -138,8 +138,8 @@ public partial class MainPage : ContentPage
         networkStream.Close();*/
 
 
-        btnText.IsInProgress = false;
-        btnPicture.IsInProgress = false;
+        SendTextButton.IsInProgress = false;
+        SendPictureButton.IsInProgress = false;
         IsFlag = true;
     }
 

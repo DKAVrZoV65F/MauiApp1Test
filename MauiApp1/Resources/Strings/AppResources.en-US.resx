@@ -159,6 +159,9 @@
   <data name="EnterTheText" xml:space="preserve">
     <value>Enter the text</value>
   </data>
+  <data name="EnterTheUserName" xml:space="preserve">
+    <value>Enter your username</value>
+  </data>
   <data name="ErrorWithIPOrPort" xml:space="preserve">
     <value>Error With IP or port</value>
   </data>
@@ -179,6 +182,9 @@
   </data>
   <data name="LightTheme" xml:space="preserve">
     <value>Light theme</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Log in</value>
   </data>
   <data name="Mail" xml:space="preserve">
     <value>Mail</value>
@@ -216,6 +222,9 @@
   <data name="ReloadApp" xml:space="preserve">
     <value>Please restart the application for the changes to take effect.</value>
   </data>
+  <data name="SaveLogin" xml:space="preserve">
+    <value>Save the login?</value>
+  </data>
   <data name="SendPicture" xml:space="preserve">
     <value>Send picture</value>
   </data>
@@ -227,6 +236,9 @@
   </data>
   <data name="Sucess" xml:space="preserve">
     <value>Sucess</value>
+  </data>
+  <data name="ViewThePassword" xml:space="preserve">
+    <value>View the password</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome!</value>

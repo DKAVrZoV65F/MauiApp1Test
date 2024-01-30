@@ -4,86 +4,103 @@
              x:Class="MauiApp1.Pages.ThemePage"
              xmlns:extension="clr-namespace:MauiApp1.Extension"
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
-             BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
 
     <Grid RowDefinitions="50, Auto, *, 76, 50, 50, 50"
           ColumnDefinitions="*, 50"
-          Margin="20,40,20,0">
+          Margin="20, 40, 20, 0">
 
+        <!-- Title -->
         <Label
-            x:Name="TitleLb"
-            Grid.Row = "0"
+            x:Name="TitleLabel"
             Grid.ColumnSpan="2"
-            FontSize="Title"
+            Margin="0, -20"
+            Text="{Binding LocalizationResourceManager[ChatSettings], Mode=OneWay}"
             TextColor="#F30A49"
+            FontFamily="RegularFont"/>
+
+        <!-- Font Slider -->
+        <Slider
+            x:Name="FontSizeSlider"
+            Grid.Row="1"
+            Margin="0, 0, 20, 10"
+            Value="20"
+            Minimum="10"
+            Maximum="30"
+            ValueChanged="FontSize_Changed"
+            MinimumTrackColor="{AppThemeBinding Light={StaticResource Red500}, Dark={StaticResource White100}}"
+            MaximumTrackColor="{AppThemeBinding Light={StaticResource Color400}, Dark={StaticResource White100}}"
+            ThumbColor="{AppThemeBinding Light={StaticResource Color400}, Dark={StaticResource White100}}"/>
+
+        <!-- Font Value -->
+        <Label
+            x:Name="FontSizeLabel"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="0, 0, 0, 20"
             FontFamily="RegularFont"
-            Margin="0,-20"
-            Text="{Binding LocalizationResourceManager[ChatSettings], Mode=OneWay}"/>
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"/>
 
-        <Slider x:Name="fontSizeSl" Margin="0, 0, 20, 10" Grid.Row="1" Grid.Column="0" Minimum ="10" Maximum="30" Value="20" ValueChanged="OnSliderValueChanged"
-                MinimumTrackColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}" MaximumTrackColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}" ThumbColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}" />
-        <Label Margin="0,0, 0, 20" Grid.Row="1" Grid.Column="1" x:Name="header" Text="20" FontFamily="RegularFont" TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}" FontSize="20" />
-
-        <ScrollView Grid.Row="2"
+        <!-- Text -->
+        <ScrollView
+            Grid.Row="2"
             Grid.ColumnSpan="2">
             <Label
-                x:Name="ExampleLabel"
+                x:Name="InfoLabel"
+                Padding="10,40,20,10"
                 Text="{Binding LocalizationResourceManager[ExampleText], Mode=OneWay}"
-                FontSize="20"
-                TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
-                FontFamily="RegularFont"
-                Padding="10,40,20,10"/>
+                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
+                FontFamily="RegularFont"/>
         </ScrollView>
 
-        <!-- Button -->
+        <!-- Accept -->
         <Button
-            x:Name="btnAccept"
+            x:Name="AcceptButton"
             Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Margin="32, 0, 32, 24"
             Text="{Binding LocalizationResourceManager[AcceptSettings], Mode=OneWay}"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill"
-            Margin="32,0,32,24"
-            Grid.ColumnSpan="2"
-            FontSize="18"
-            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource Gray970}}"
             FontFamily="BoldFont"
-            BackgroundColor="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource Gray970}}"
-            Clicked="SettingsClicked"
-            BorderWidth="0"
-            CornerRadius="26"/>
+            Clicked="Accept_Clicked"
+            CornerRadius="26"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"/>
 
+        <!-- Light Theme -->
         <RadioButton
-            x:Name="LightRb"
-            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
-            FontSize="20"
-            Grid.ColumnSpan="2"
+            x:Name="LightRadioButton"
             Grid.Row="4"
+            Grid.ColumnSpan="2"
             Content="{Binding LocalizationResourceManager[LightTheme], Mode=OneWay}"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             FontFamily="RegularFont"
             Value="Light"
-            CheckedChanged="OnThemeCheckedChanged" />
+            CheckedChanged="Theme_Changed" />
 
+        <!-- Dark Theme  -->
         <RadioButton
-            x:Name="DarkRb"
-            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
-            Grid.ColumnSpan="2"
+            x:Name="DarkRadioButton"
             Grid.Row="5"
-            FontSize="20"
-            FontFamily="RegularFont"
+            Grid.ColumnSpan="2"
             Content="{Binding LocalizationResourceManager[DarkTheme], Mode=OneWay}"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
+            FontFamily="RegularFont"
             Value="Dark"
-            CheckedChanged="OnThemeCheckedChanged" />
+            CheckedChanged="Theme_Changed" />
 
+        <!-- Default Theme  -->
         <RadioButton
-            x:Name="DefaultRb"
-            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
+            x:Name="DefaultRadioButton"
             Grid.Row="6"
             Grid.ColumnSpan="2"
-            FontSize="20"
-            FontFamily="RegularFont"
             Content="{Binding LocalizationResourceManager[DefaultTheme], Mode=OneWay}"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
+            FontFamily="RegularFont"
             Value="Default"
-            CheckedChanged="OnThemeCheckedChanged" />
+            CheckedChanged="Theme_Changed" />
 
     </Grid>
+
 </ContentPage>

@@ -15,13 +15,13 @@ public partial class NetworkPage : ContentPage
         InitializeComponent();
 
         int getValue = Preferences.Get("FontSize", 20);
-        TitleLb.FontSize = getValue + 5;
-        IpLb.FontSize = getValue;
-        IpEntr.FontSize = getValue;
-        PortLb.FontSize = getValue;
-        PortEntr.FontSize = getValue;
-        PasswordLb.FontSize = getValue;
-        PasswordEntr.FontSize = getValue;
+        TitleLabel.FontSize = getValue + 5;
+        IPLabel.FontSize = getValue;
+        IPEntry.FontSize = getValue;
+        PortLabel.FontSize = getValue;
+        PortEntry.FontSize = getValue;
+        PasswordLabel.FontSize = getValue;
+        PasswordEntry.FontSize = getValue;
     }
     
 
@@ -30,14 +30,14 @@ public partial class NetworkPage : ContentPage
         if (!IsFlag) return;
 
         IsFlag = false;
-        CheckIpAPort.IsInProgress = true;
+        CheckIpPortButton.IsInProgress = true;
 
-        string ipAdress = IpEntr.Text;
-        _ = int.TryParse(PortEntr.Text, out int port);
+        string ipAdress = IPEntry.Text;
+        _ = int.TryParse(PortEntry.Text, out int port);
         if ((string.IsNullOrEmpty(ipAdress) || port == 0) || !IsValidIpAddress(ipAdress) || !IsValidPort(port))
         {
             IsFlag = true;
-            CheckIpAPort.IsInProgress = false;
+            CheckIpPortButton.IsInProgress = false;
             await DisplayAlert(LocalizationResourceManager["AppName"].ToString(), LocalizationResourceManager["ErrorWithIPOrPort"].ToString(), "OK");
             return;
         }
@@ -46,26 +46,24 @@ public partial class NetworkPage : ContentPage
         await DisplayAlert(LocalizationResourceManager["AppName"].ToString(), result, "OK");
 
         IsFlag = true;
-        CheckIpAPort.IsInProgress = false;
+        CheckIpPortButton.IsInProgress = false;
     }
 
     private bool IsValidIpAddress(string ipAdress)
     {
-        Regex validateIPv4Regex = new Regex("^(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");  // prints True
+        Regex validateIPv4Regex = new("^(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");  // prints True
         return validateIPv4Regex.IsMatch(ipAdress);
     }
 
-    private bool IsValidPort(int port) => (port >= 49152 && port <= 65535) ? true : false;
+    private bool IsValidPort(int port) => port >= 49152 && port <= 65535;
 
     private async Task<bool> PingServerAsync(string ipAddress, int port)
     {
         try
         {
-            using (TcpClient client = new TcpClient())
-            {
-                await client.ConnectAsync(ipAddress, port);
-                return true;
-            }
+            using TcpClient client = new();
+            await client.ConnectAsync(ipAddress, port);
+            return true;
         }
         catch
         {

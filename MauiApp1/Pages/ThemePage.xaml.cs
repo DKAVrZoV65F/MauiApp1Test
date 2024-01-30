@@ -16,59 +16,51 @@ public partial class ThemePage : ContentPage
         switch (getTheme)
         {
             case "Light":
-                LightRb.IsChecked = true;
+                LightRadioButton.IsChecked = true;
                 break;
             case "Dark":
-                DarkRb.IsChecked = true;
+                DarkRadioButton.IsChecked = true;
                 break;
             default:
-                DefaultRb.IsChecked = true;
+                DefaultRadioButton.IsChecked = true;
                 break;
         }
 
         int getValue = Preferences.Get("FontSize", oldValue);
-        fontSizeSl.Value = getValue;
+        FontSizeSlider.Value = getValue;
         oldValue = getValue;
-        ExampleLabel.FontSize = getValue;
-
-
-        TitleLb.FontSize = getValue + 5;
-        btnAccept.FontSize = getValue;
-        LightRb.FontSize = getValue;
-        DarkRb.FontSize = getValue;
-        DefaultRb.FontSize = getValue;
+        TitleLabel.FontSize = getValue + 5;
+        InfoLabel.FontSize = getValue;
+        AcceptButton.FontSize = getValue;
+        LightRadioButton.FontSize = getValue;
+        DarkRadioButton.FontSize = getValue;
+        DefaultRadioButton.FontSize = getValue;
     }
 
-    private void OnThemeCheckedChanged(object sender, CheckedChangedEventArgs e)
+    private void Theme_Changed(object sender, CheckedChangedEventArgs e)
     {
         RadioButton selectedRadioButton = ((RadioButton)sender);
         string? checkBoxValue = (selectedRadioButton.Value != null) ? selectedRadioButton.Value.ToString() : "";
         if (string.IsNullOrEmpty(checkBoxValue)) return;
 
-        switch (checkBoxValue)
+        Application.Current.UserAppTheme = checkBoxValue switch
         {
-            case "Light":
-                Application.Current.UserAppTheme = AppTheme.Light;
-                break;
-            case "Dark":
-                Application.Current.UserAppTheme = AppTheme.Dark;
-                break;
-            default:
-                Application.Current.UserAppTheme = AppTheme.Unspecified;
-                break;
-        }
+            "Light" => AppTheme.Light,
+            "Dark" => AppTheme.Dark,
+            _ => AppTheme.Unspecified,
+        };
         Preferences.Set("ThemeApp", checkBoxValue);
     }
 
-    private void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+    private void FontSize_Changed(object sender, ValueChangedEventArgs e)
     {
         int value = (int)e.NewValue;
-        ExampleLabel.FontSize = value;
-        header.Text = value.ToString();
+        InfoLabel.FontSize = value;
+        FontSizeLabel.Text = value.ToString();
         if (value != oldValue) oldValue = value;
     }
 
-    private async void SettingsClicked(object sender, EventArgs e)
+    private async void Accept_Clicked(object sender, EventArgs e)
     {
         Preferences.Set("FontSize", oldValue);
         await DisplayAlert(LocalizationResourceManager["AppName"].ToString(), LocalizationResourceManager["ReloadApp"].ToString(), "OK");

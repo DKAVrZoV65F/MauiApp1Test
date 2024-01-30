@@ -4,38 +4,41 @@
              x:Class="MauiApp1.Pages.LanguagePage"
              xmlns:extension="clr-namespace:MauiApp1.Extension"
              xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
-             BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
 
     <Grid RowDefinitions="50, 50, 50"
-        ColumnDefinitions="*"
-        Margin="20,40,20,0">
+          Margin="20,40,20,0">
 
+        <!-- Title -->
         <Label
-            x:Name="TitleLb"
-            Grid.Row="0"
+            x:Name="TitleLabel"
+            Text="{Binding LocalizationResourceManager[Language], Mode=OneWay}"
             FontSize="Title"
             TextColor="#F30A49"
-            FontFamily="RegularFont"
-            Text="{Binding LocalizationResourceManager[Language], Mode=OneWay}"/>
+            FontFamily="RegularFont"/>
 
+        <!-- Russian -->
         <RadioButton
-            x:Name="RussianRb"
-            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
-            FontSize="20"
+            x:Name="RussianRadioButton"
             Grid.Row="1"
-            Content="Русский" 
-            FontFamily="RegularFont"
+            Content="Русский"
             Value="ru-RU"
-            CheckedChanged="OnLanguageCheckedChanged" />
-
-        <RadioButton
-            x:Name="EnglishRb"
-            TextColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource White100}}"
-            Grid.Row="2"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             FontSize="20"
-            Content="English"
             FontFamily="RegularFont"
+            CheckedChanged="Language_Changed" />
+
+        <!-- English -->
+        <RadioButton
+            x:Name="EnglishRadioButton"
+            Grid.Row="2"
+            Content="English"
             Value="en-US"
-            CheckedChanged="OnLanguageCheckedChanged" />
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
+            FontSize="20"
+            FontFamily="RegularFont"
+            CheckedChanged="Language_Changed"/>
+
     </Grid>
+
 </ContentPage>
