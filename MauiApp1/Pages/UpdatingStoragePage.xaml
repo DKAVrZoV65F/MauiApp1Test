@@ -30,8 +30,9 @@
 
         <!-- Description -->
         <Label
+            x:Name="DescriptionLabel"
             Grid.Row="2"
-            Text="Description:"
+            Text="{Binding LocalizationResourceManager[Description], Mode=OneWay}"
             Margin="0, 10"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             FontSize="20"
@@ -41,7 +42,6 @@
             x:Name="DescriptionEntry"
             Grid.Row="3"
             Margin="0, 10"
-            Placeholder="Search field"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}"
             FontSize="20"
@@ -55,7 +55,7 @@
             x:Name="SavingButton"
             Grid.Row="4"
             Margin="0, 20"
-            Text="Saving"
+            Text="{Binding LocalizationResourceManager[Save], Mode=OneWay}"
             BackgroundColor="{AppThemeBinding Light={StaticResource Color100}, Dark={StaticResource Gray970}}"
             MinimumHeightRequest="0"
             Tapped="SavingData"

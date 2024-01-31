@@ -17,7 +17,9 @@
             Padding="20, 0, 0, 0"
             Text="{Binding LocalizationResourceManager[Settings], Mode=OneWay}"
             TextColor="#F30A49"
-            FontFamily="RegularFont"/>
+            FontFamily="RegularFont"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start"/>
 
         <!-- Chat -->
         <Label
@@ -27,7 +29,9 @@
             Padding="40, 0, 20, 0"
             Text="{Binding LocalizationResourceManager[ChatSettings], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontFamily="RegularFont">
+            FontFamily="RegularFont"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="ChatSettingsLabel_Tapped" />
             </Label.GestureRecognizers>
@@ -42,7 +46,9 @@
             Padding="40, 0, 20, 0"
             Text="{Binding LocalizationResourceManager[Network], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontFamily="RegularFont">
+            FontFamily="RegularFont"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="NetworkLabel_Tapped"/>
             </Label.GestureRecognizers>
@@ -56,7 +62,9 @@
             Padding="40, 0, 20, 0"
             Text="{Binding LocalizationResourceManager[Language], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontFamily="RegularFont">
+            FontFamily="RegularFont"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="LanguageLabel_Tapped" />
             </Label.GestureRecognizers>
@@ -69,7 +77,9 @@
             Grid.Column="1"
             Padding="40, 0, 40, 0"
             TextColor="{AppThemeBinding Light={StaticResource Color200}, Dark={StaticResource Red100}}"
-            FontFamily="RegularFont">
+            FontFamily="RegularFont"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="LanguageLabel_Tapped" />
             </Label.GestureRecognizers>
@@ -84,7 +94,9 @@
             Padding="20, 0, 0, 0"
             Text="{Binding LocalizationResourceManager[Help], Mode=OneWay}"
             TextColor="#F30A49"
-            FontFamily="RegularFont"/>
+            FontFamily="RegularFont"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start"/>
 
         <!-- GitHub -->
         <Label
@@ -94,7 +106,9 @@
             Padding="40, 0, 20, 0"
             Text="GitHub"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontFamily="RegularFont">
+            FontFamily="RegularFont"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="GitHubLabel_Tapped" />
             </Label.GestureRecognizers>
@@ -109,7 +123,9 @@
             Padding="40, 0, 20, 0"
             Text="{Binding LocalizationResourceManager[Mail], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontFamily="RegularFont">
+            FontFamily="RegularFont"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="MailLabel_Tapped" />
             </Label.GestureRecognizers>
@@ -124,7 +140,9 @@
             Padding="40, 0, 20, 0"
             Text="{Binding LocalizationResourceManager[Policy], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontFamily="RegularFont">
+            FontFamily="RegularFont"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="PolicyLabel_Tapped" />
             </Label.GestureRecognizers>
@@ -140,7 +158,9 @@
             Background="{AppThemeBinding Light={StaticResource Color100}, Dark={StaticResource Black}}"
             FontFamily="BoldFont"
             VerticalOptions="Fill" 
-            HorizontalOptions="Fill">
+            HorizontalOptions="Fill"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="Secret_Tapped" />
             </Label.GestureRecognizers>

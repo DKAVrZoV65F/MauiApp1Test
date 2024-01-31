@@ -158,7 +158,7 @@
             <Label
                 x:Name="PolicyLabel"
                 Margin="48,12,48,0"
-                Text="{Binding LocalizationResourceManager[Description], Mode=OneWay}"
+                Text="{Binding LocalizationResourceManager[DescriptionPolicy], Mode=OneWay}"
                 TextColor="#A77979"
                 LineHeight="1.2"
                 FontSize="18"

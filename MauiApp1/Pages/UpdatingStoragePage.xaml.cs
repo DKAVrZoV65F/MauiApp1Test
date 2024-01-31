@@ -1,14 +1,26 @@
+﻿using MauiApp1.Extension;
+
 namespace MauiApp1.Pages;
 
 public partial class UpdatingStoragePage : ContentPage
 {
-	private bool IsFlag = true;
+    public LocalizationResourceManager LocalizationResourceManager
+       => LocalizationResourceManager.Instance;
+    private bool IsFlag = true;
 	public UpdatingStoragePage(User xyz)
 	{
 		InitializeComponent();
 
-        IDLabel.Text = $"ID: {xyz.Id}";
-        NameLabel.Text = $"Name: {xyz.Name}";
+        BindingContext = this;
+
+        int getValue = Preferences.Get("FontSize", 20);
+        IDLabel.FontSize = getValue;
+        NameLabel.FontSize = getValue;
+        DescriptionLabel.FontSize = getValue;
+        DescriptionEntry.FontSize = getValue;
+
+        IDLabel.Text = $"ID: {xyz.Id}"; 
+        NameLabel.Text = $"{LocalizationResourceManager["Title"]} {xyz.Name}";
         DescriptionEntry.Text = $"{xyz.Description}";
     }
 
@@ -23,5 +35,6 @@ public partial class UpdatingStoragePage : ContentPage
 
         IsFlag = true;
         SavingButton.IsInProgress = false;
+        await Navigation.PopAsync();
     }
 }

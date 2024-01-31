@@ -142,6 +142,9 @@
     <value>Default theme</value>
   </data>
   <data name="Description" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="DescriptionPolicy" xml:space="preserve">
     <value>In common language usage, fruit normally means the seed-associated fleshy structures. Excepteur sint occaecat cupidatat non proident, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, sunt in culpa qui officia deserunt mollit anim id est laborum.</value>
   </data>
   <data name="DestHostUn" xml:space="preserve">
@@ -222,8 +225,14 @@
   <data name="ReloadApp" xml:space="preserve">
     <value>Please restart the application for the changes to take effect.</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="SaveLogin" xml:space="preserve">
     <value>Save the login?</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="SendPicture" xml:space="preserve">
     <value>Send picture</value>
@@ -236,6 +245,9 @@
   </data>
   <data name="Sucess" xml:space="preserve">
     <value>Sucess</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title:</value>
   </data>
   <data name="ViewThePassword" xml:space="preserve">
     <value>View the password</value>
