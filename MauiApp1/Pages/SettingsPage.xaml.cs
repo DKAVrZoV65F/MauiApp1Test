@@ -11,49 +11,6 @@ public partial class SettingsPage : ContentPage
     private int counter = 0;
     private bool IsFlag = false;
 
-    /*readonly string text = "Very long text! )";
-    bool IsFlag = true;
-    readonly List<string> ipAddress = ["192.168.1.1", "192.168.55.99", "192.168.55.102"];
-    readonly List<string> ipResult = [];
-    readonly string ipServer = "192.168.1.68";
-    readonly int portServer = 8888;
-    string path = "";
-    string command = "IMAGE";
-    string currentLanguage = "English";
-    readonly string RUSSIAN = "Русский";
-    readonly string ENGLISH = "English";
-
-    FormattedString formattedString = new FormattedString();
-        formattedString.Spans.Add(new Span
-        {
-            Text = "Сегодня ",
-            FontSize = 22
-        });
-        formattedString.Spans.Add(new Span
-        {
-            Text = "хорошая",
-            TextColor = Colors.DarkRed,
-            BackgroundColor = Colors.LightPink,
-        });
-        formattedString.Spans.Add(new Span
-        {
-            Text = " погода!",
-            FontAttributes = FontAttributes.Bold
-        });
-    testLabel.FormattedText = formattedString;
-
-    Ping ping = new();
-    foreach (string item in ipAddress)
-    {
-        PingReply pingReply = ping.Send(item);
-        ipResult.Add(pingReply.Status.ToString());
-    }
-
-    foreach (string item in ipResult)
-    {
-        await DisplayAlert(Title, item, "OK");
-    }*/
-
     public SettingsPage()
     {
         InitializeComponent();

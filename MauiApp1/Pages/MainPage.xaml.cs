@@ -1,5 +1,6 @@
 ﻿using MauiApp1.Extension;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace MauiApp1.Pages;
@@ -9,12 +10,11 @@ public partial class MainPage : ContentPage
     public LocalizationResourceManager LocalizationResourceManager
        => LocalizationResourceManager.Instance;
 
-    string text = "";
-    string textFromServer = "";
-    bool IsFlag = true;
+    private string text = "";
+    private string textFromServer = "";
+    private bool IsFlag = true;
 
-    private List<string> IpAddress = ["192.168.55.101", "192.168.55.102", "192.168.55.103", "192.168.55.104", "192.168.55.105", "192.168.48.250", "192.168.48.251", "192.168.48.252"];
-    private string ipServer;
+    private string ipServer = "";
     private int portServer = 55555;
 
 
@@ -118,6 +118,25 @@ public partial class MainPage : ContentPage
 
     private async Task<string> GetPicturePath()
     {
+        bool result = await DisplayAlert("Подтвердить действие", "Вы хотите удалить элемент?", "Сфоткать", "Медиа");
+        string res = (result) ? await GetPicture() : await GetMedia();
+        return res;
+    }
+
+    private async Task<string> GetPicture()
+    {
+        FileResult myPhoto = await MediaPicker.Default.CapturePhotoAsync();
+        if (myPhoto == null) return "";
+        string localFilePath = Path.Combine(FileSystem.CacheDirectory, myPhoto.FileName);
+        using Stream sourceStream = await myPhoto.OpenReadAsync();
+        using FileStream localFileStream = File.OpenWrite(localFilePath);
+        await sourceStream.CopyToAsync(localFileStream);
+        localFileStream.Close();
+        return localFilePath;
+    }
+
+    private async Task<string> GetMedia()
+    {
         FileResult myPhoto = await MediaPicker.Default.PickPhotoAsync();
         if (myPhoto == null) return "";
         string localFilePath = Path.Combine(FileSystem.CacheDirectory, myPhoto.FileName);
@@ -145,20 +164,29 @@ public partial class MainPage : ContentPage
         // буфер для входящих данных
         var response = new List<byte>();
         NetworkStream networkStream = tcpClient.GetStream();
-        FileStream fileStream = null;
 
         int bytesRead = 10; // для считывания байтов из потока
         await stream.WriteAsync(Encoding.UTF8.GetBytes("IMAGE" + "\0"));
 
         string fileName = path;
-        FileInfo fileInfo = new FileInfo(fileName);
+        FileInfo fileInfo = new (fileName);
         long fileSize = fileInfo.Length;
-        await stream.WriteAsync(Encoding.UTF8.GetBytes(fileSize + "\0"));
+
+        if (!string.IsNullOrEmpty(Preferences.Get("SavedPasswordServer", "")))
+        {
+            string encword = EncryptText(fileSize.ToString());
+            await stream.WriteAsync(Encoding.UTF8.GetBytes($"1{encword}\0"));
+        }
+        else
+        {
+            await stream.WriteAsync(Encoding.UTF8.GetBytes($"0{fileSize}\0")); 
+        }
 
         byte[] buffer = new byte[1024];
         int bytesReadImg;
         string filePath = path;
-        fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+        FileStream fileStream = new (filePath, FileMode.Open, FileAccess.Read);
+
         while ((bytesReadImg = fileStream.Read(buffer, 0, buffer.Length)) != 0)
         {
             tcpClient.GetStream().Write(buffer, 0, bytesReadImg);
@@ -172,6 +200,7 @@ public partial class MainPage : ContentPage
         }
         var translation = Encoding.UTF8.GetString(response.ToArray());
         textFromServer = translation + '\n';
+
         response.Clear();
         networkStream.Close();
     }
@@ -193,29 +222,108 @@ public partial class MainPage : ContentPage
         // буфер для входящих данных
         var response = new List<byte>();
         NetworkStream networkStream = tcpClient.GetStream();
-        FileStream fileStream = null;
 
         int bytesRead = 10; // для считывания байтов из потока
-        await stream.WriteAsync(Encoding.UTF8.GetBytes("TEXT" + "\0"));
+        await stream.WriteAsync(Encoding.UTF8.GetBytes("TEXT\0"));
 
-        await stream.WriteAsync(Encoding.UTF8.GetBytes(text + '\0'));
-        try
+        if (!string.IsNullOrEmpty(Preferences.Get("SavedPasswordServer", "")))
         {
-            while ((bytesRead = stream.ReadByte()) != '\0')
+            text = EncryptText(text);
+            await stream.WriteAsync(Encoding.UTF8.GetBytes($"1{text}\0"));
+            try
             {
-                // добавляем в буфер
-                response.Add((byte)bytesRead);
+                while ((bytesRead = stream.ReadByte()) != '\0')
+                {
+                    // добавляем в буфер
+                    response.Add((byte)bytesRead);
+                }
             }
+            finally
+            {
+                textFromServer = "Error on server 2\n";
+            }
+
+            string translation = Encoding.UTF8.GetString(response.ToArray());
+            textFromServer = (DecryptText(translation))[1..] + '\n';
         }
-        finally
+        else
         {
-            textFromServer = "Error on server 2\n";
+            await stream.WriteAsync(Encoding.UTF8.GetBytes($"0{text}\0"));
+            try
+            {
+                while ((bytesRead = stream.ReadByte()) != '\0')
+                {
+                    // добавляем в буфер
+                    response.Add((byte)bytesRead);
+                }
+            }
+            finally
+            {
+                textFromServer = "Error on server 2\n";
+            }
+            string translation = Encoding.UTF8.GetString(response.ToArray());
+            textFromServer = translation[1..] + '\n';
         }
 
-        var translation = Encoding.UTF8.GetString(response.ToArray());
-        //logEditor.Text += $"\nWord: {translation}";
-        textFromServer = translation + '\n';
         response.Clear();
         networkStream.Close();
+    }
+
+
+    private static string DecryptText(string CipherText)
+    {
+        byte[] toEncryptArray = Convert.FromBase64String(CipherText);
+        MD5CryptoServiceProvider objMD5CryptoService = new();
+
+        //Gettting the bytes from the Security Key and Passing it to compute the Corresponding Hash Value.
+        byte[] securityKeyArray = objMD5CryptoService.ComputeHash(UTF8Encoding.UTF8.GetBytes(Preferences.Get("SavedPasswordServer", "")));
+        objMD5CryptoService.Clear();
+
+        using TripleDESCryptoServiceProvider objTripleDESCryptoService = new()
+        {
+            //Assigning the Security key to the TripleDES Service Provider.
+            Key = securityKeyArray,
+            //Mode of the Crypto service is Electronic Code Book.
+            Mode = CipherMode.ECB,
+            //Padding Mode is PKCS7 if there is any extra byte is added.
+            Padding = PaddingMode.PKCS7
+        };
+
+        var objCrytpoTransform = objTripleDESCryptoService.CreateDecryptor();
+        //Transform the bytes array to resultArray
+        byte[] resultArray = objCrytpoTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+        objTripleDESCryptoService.Clear();
+
+        //Convert and return the decrypted data/byte into string format.
+        return UTF8Encoding.UTF8.GetString(resultArray);
+    }
+
+    private static string EncryptText(string PlainText)
+    {
+        // Getting the bytes of Input String.
+        byte[] toEncryptedArray = UTF8Encoding.UTF8.GetBytes(PlainText);
+
+        MD5CryptoServiceProvider objMD5CryptoService = new();
+        //Gettting the bytes from the Security Key and Passing it to compute the Corresponding Hash Value.
+        byte[] securityKeyArray = objMD5CryptoService.ComputeHash(UTF8Encoding.UTF8.GetBytes(Preferences.Get("SavedPasswordServer", "")));
+        //De-allocatinng the memory after doing the Job.
+        objMD5CryptoService.Clear();
+
+        using TripleDESCryptoServiceProvider objTripleDESCryptoService = new()
+        {
+            //Assigning the Security key to the TripleDES Service Provider.
+            Key = securityKeyArray,
+            //Mode of the Crypto service is Electronic Code Book.
+            Mode = CipherMode.ECB,
+            //Padding Mode is PKCS7 if there is any extra byte is added.
+            Padding = PaddingMode.PKCS7
+        };
+
+
+        var objCrytpoTransform = objTripleDESCryptoService.CreateEncryptor();
+        //Transform the bytes array to resultArray
+        byte[] resultArray = objCrytpoTransform.TransformFinalBlock(toEncryptedArray, 0, toEncryptedArray.Length);
+        objTripleDESCryptoService.Clear();
+        return Convert.ToBase64String(resultArray, 0, resultArray.Length);
     }
 }

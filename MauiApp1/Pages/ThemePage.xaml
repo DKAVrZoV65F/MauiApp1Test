@@ -47,7 +47,7 @@
             Grid.ColumnSpan="2">
             <Label
                 x:Name="InfoLabel"
-                Padding="10,40,20,10"
+                Padding="10, 40, 20, 10"
                 Text="{Binding LocalizationResourceManager[ExampleText], Mode=OneWay}"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
                 FontFamily="RegularFont"/>
@@ -77,7 +77,7 @@
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             FontFamily="RegularFont"
             Value="Light"
-            CheckedChanged="Theme_Changed" />
+            CheckedChanged="Theme_Changed"/>
 
         <!-- Dark Theme  -->
         <RadioButton
@@ -88,7 +88,7 @@
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             FontFamily="RegularFont"
             Value="Dark"
-            CheckedChanged="Theme_Changed" />
+            CheckedChanged="Theme_Changed"/>
 
         <!-- Default Theme  -->
         <RadioButton
@@ -99,7 +99,7 @@
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             FontFamily="RegularFont"
             Value="Default"
-            CheckedChanged="Theme_Changed" />
+            CheckedChanged="Theme_Changed"/>
 
     </Grid>
 

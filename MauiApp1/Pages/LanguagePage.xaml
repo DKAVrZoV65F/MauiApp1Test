@@ -24,7 +24,6 @@
             Content="Русский"
             Value="ru-RU"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontSize="20"
             FontFamily="RegularFont"
             CheckedChanged="Language_Changed" />
 
@@ -35,7 +34,6 @@
             Content="English"
             Value="en-US"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontSize="20"
             FontFamily="RegularFont"
             CheckedChanged="Language_Changed"/>
 

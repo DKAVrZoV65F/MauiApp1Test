@@ -26,11 +26,11 @@
             Placeholder="{Binding LocalizationResourceManager[EnterTheUserName], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}"
-            FontSize="20"
             FontFamily="RegularFont"
             Keyboard="Text"
             IsSpellCheckEnabled="True"
-            IsTextPredictionEnabled="True"/>
+            IsTextPredictionEnabled="True"
+            VerticalTextAlignment="Center"/>
 
         <!-- Password -->
         <Entry
@@ -40,12 +40,12 @@
             Placeholder="{Binding LocalizationResourceManager[EnterThePassword], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}"
-            FontSize="20"
             FontFamily="RegularFont"
             Keyboard="Text"
             IsPassword="True"
             IsSpellCheckEnabled="True"
-            IsTextPredictionEnabled="True"/>
+            IsTextPredictionEnabled="True"
+            VerticalTextAlignment="Center"/>
 
         <!-- Display password -->
         <HorizontalStackLayout
@@ -61,8 +61,8 @@
                 x:Name="DisplayLabel"
                 Text="{Binding LocalizationResourceManager[ViewThePassword], Mode=OneWay}"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-                FontSize="20"
-                FontFamily="BoldFont"/>
+                FontFamily="BoldFont"
+                VerticalTextAlignment="Center"/>
         </HorizontalStackLayout>
 
         <!-- Save Log In -->
@@ -73,15 +73,14 @@
             VerticalOptions="Fill">
             <CheckBox
                 x:Name="SavingCheckBox"
-                
                 Color="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource White100}}"/>
 
             <Label
                 x:Name="SavingLabel"
                 Text="{Binding LocalizationResourceManager[SaveLogin], Mode=OneWay}"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-                FontSize="20"
-                FontFamily="BoldFont"/>
+                FontFamily="BoldFont"
+                VerticalTextAlignment="Center"/>
         </HorizontalStackLayout>
 
         <!-- Log In -->

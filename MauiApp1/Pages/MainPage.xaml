@@ -17,7 +17,6 @@
             Text="Danger!"
             TextColor="{AppThemeBinding Light={StaticResource Red500}, Dark={StaticResource Red100}}"
             HorizontalTextAlignment="Center"
-            FontSize="20"
             FontFamily="RegularFont"
             IsVisible="True"/>
 
@@ -31,7 +30,6 @@
             <Label
                 x:Name="ResultEditor"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-                FontSize="20"
                 FontFamily="RegularFont"/>
         </ScrollView>
 
@@ -43,12 +41,13 @@
             Placeholder="{Binding LocalizationResourceManager[EnterTheText], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             BackgroundColor="{AppThemeBinding Light={StaticResource White300}, Dark={StaticResource Gray970}}"
-            FontSize="20"
             FontFamily="RegularFont"
             Keyboard="Text"
             IsSpellCheckEnabled="True"
             IsTextPredictionEnabled="True"
-            TextChanged="QueryEditor_Changed">
+            TextChanged="QueryEditor_Changed"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start">
             <Editor.Shadow>
                 <Shadow
                     Brush="{AppThemeBinding Light={StaticResource Gray970}, Dark={StaticResource White100}}"

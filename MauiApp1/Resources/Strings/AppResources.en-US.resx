@@ -250,7 +250,7 @@
     <value>Title:</value>
   </data>
   <data name="ViewThePassword" xml:space="preserve">
-    <value>View the password</value>
+    <value>View the password?</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome!</value>

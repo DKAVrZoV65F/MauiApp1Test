@@ -27,7 +27,6 @@
             Grid.Row="1"
             Text="{Binding LocalizationResourceManager[IPAddress], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontSize="20"
             FontFamily="BoldFont"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"/>
@@ -42,9 +41,9 @@
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             PlaceholderColor="{AppThemeBinding Light={StaticResource Color500}, Dark={StaticResource Color600}}"
             BackgroundColor="{AppThemeBinding Light={StaticResource Color100}, Dark={StaticResource Gray970}}"
-            FontSize="20"
             FontFamily="RegularFont"
-            Keyboard="Telephone"/>
+            Keyboard="Telephone"
+            VerticalTextAlignment="Center"/>
 
         <!-- Port text -->
         <Label
@@ -52,7 +51,6 @@
             Grid.Row="2"
             Text="{Binding LocalizationResourceManager[Port], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontSize="20"
             FontFamily="BoldFont"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"/>
@@ -67,9 +65,9 @@
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             PlaceholderColor="{AppThemeBinding Light={StaticResource Color500}, Dark={StaticResource Color600}}"
             BackgroundColor="{AppThemeBinding Light={StaticResource Color100}, Dark={StaticResource Gray970}}"
-            FontSize="20"
             FontFamily="RegularFont"
-            Keyboard="Numeric"/>
+            Keyboard="Numeric"
+            VerticalTextAlignment="Center"/>
 
         <!-- Password text -->
         <Label
@@ -77,7 +75,6 @@
             Grid.Row="3"
             Text="{Binding LocalizationResourceManager[Password], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-            FontSize="20"
             FontFamily="BoldFont"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"/>
@@ -92,9 +89,9 @@
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             PlaceholderColor="{AppThemeBinding Light={StaticResource Color500}, Dark={StaticResource Color600}}"
             BackgroundColor="{AppThemeBinding Light={StaticResource Color100}, Dark={StaticResource Gray970}}"
-            FontSize="20"
             FontFamily="RegularFont"
-            IsPassword="True"/>
+            IsPassword="True"
+            VerticalTextAlignment="Center"/>
 
         <!-- Ping -->
         <customControls:ButtonControl

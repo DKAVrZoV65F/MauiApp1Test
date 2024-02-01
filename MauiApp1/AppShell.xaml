@@ -6,9 +6,9 @@
     xmlns:extension="clr-namespace:MauiApp1.Extension"
     xmlns:strings="clr-namespace:MauiApp1.Resources.Strings"
     xmlns:local="clr-namespace:MauiApp1.Pages"
-    Shell.BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-    Shell.FlyoutBehavior="Flyout"
-    Shell.FlyoutWidth="250">
+    Shell.BackgroundColor="{AppThemeBinding Default={StaticResource Black}, Light={StaticResource Color100}, Dark={StaticResource Black}}"
+    FlyoutIcon="moon2.png"
+    Shell.FlyoutWidth="270">
 
     <Shell.FlyoutHeader>
         <Grid>
@@ -17,13 +17,11 @@
     </Shell.FlyoutHeader>
 
     <FlyoutItem Title="{Binding LocalizationResourceManager[MLModel], Mode=OneWay}" FlyoutIcon="ai_page.png">
-        <ShellContent
-            ContentTemplate="{DataTemplate local:MainPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
     </FlyoutItem>
 
     <FlyoutItem Title="{Binding LocalizationResourceManager[Settings], Mode=OneWay}" Icon="settings_page.png">
-        <ShellContent
-            ContentTemplate="{DataTemplate local:SettingsPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}"/>
     </FlyoutItem>
 
     <FlyoutItem Title="{Binding LocalizationResourceManager[Administration], Mode=OneWay}" Icon="profile_security_page.png">
@@ -31,4 +29,5 @@
             x:Name="AdminPanel"
             ContentTemplate="{DataTemplate local:AdminLogInPage}"/>
     </FlyoutItem>
+    
 </Shell>

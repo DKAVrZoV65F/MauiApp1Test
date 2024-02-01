@@ -1,5 +1,6 @@
-using MauiApp1.Extension;
+﻿using MauiApp1.Extension;
 using System.Net.Sockets;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace MauiApp1.Pages;
@@ -10,6 +11,7 @@ public partial class NetworkPage : ContentPage
        => LocalizationResourceManager.Instance;
 
     private bool IsFlag = true;
+    private bool task = false;
     public NetworkPage()
     {
         InitializeComponent();
@@ -25,8 +27,9 @@ public partial class NetworkPage : ContentPage
 
         IPEntry.Text = Preferences.Get("SavedIpServer", "");
         PortEntry.Text = Preferences.Get("SavedPortServer", 0).ToString();
+        PasswordEntry.Text = Preferences.Get("SavedPasswordServer", "");
     }
-    
+
 
     private async void PingServer(object sender, EventArgs e)
     {
@@ -35,22 +38,23 @@ public partial class NetworkPage : ContentPage
         IsFlag = false;
         CheckIpPortButton.IsInProgress = true;
 
-        string ipAdress = IPEntry.Text;
+        string ipAddress = IPEntry.Text;
         _ = int.TryParse(PortEntry.Text, out int port);
-        if ((string.IsNullOrEmpty(ipAdress) || port == 0) || !IsValidIpAddress(ipAdress) || !IsValidPort(port))
+        if ((string.IsNullOrEmpty(ipAddress) || port == 0) || !IsValidIpAddress(ipAddress) || !IsValidPort(port))
         {
             IsFlag = true;
             CheckIpPortButton.IsInProgress = false;
             await DisplayAlert(LocalizationResourceManager["AppName"].ToString(), LocalizationResourceManager["ErrorWithIPOrPort"].ToString(), "OK");
             return;
         }
-        Task<bool> task = PingServerAsync(ipAdress, port);
-        string? result = (await task) ? LocalizationResourceManager["Sucess"].ToString() : LocalizationResourceManager["DestHostUn"].ToString();
+        string password = PasswordEntry.Text;
+
+        await PingServerAsync(ipAddress, port, password);
+
+        string? result = (task) ? LocalizationResourceManager["Sucess"].ToString() : LocalizationResourceManager["DestHostUn"].ToString();
         await DisplayAlert(LocalizationResourceManager["AppName"].ToString(), result, "OK");
 
-        Preferences.Set("SavedIpServer", ipAdress);
-        Preferences.Set("SavedPortServer", port);
-
+        task = false;
         IsFlag = true;
         CheckIpPortButton.IsInProgress = false;
     }
@@ -63,22 +67,47 @@ public partial class NetworkPage : ContentPage
 
     private bool IsValidPort(int port) => port >= 49152 && port <= 65535;
 
-    private async Task<bool> PingServerAsync(string ipAddress, int port)
+    private async Task PingServerAsync(string ipAddress, int port, string password)
     {
-        /*using TcpClient client = new();
+        if (string.IsNullOrEmpty(ipAddress)) return;
+
+
+        using TcpClient tcpClient = new();
         try
         {
-            await client.ConnectAsync(ipAddress, port);
-            return true;
+            await tcpClient.ConnectAsync(ipAddress, port);
+            var stream = tcpClient.GetStream();
+
+            // буфер для входящих данных
+            var response = new List<byte>();
+            NetworkStream networkStream = tcpClient.GetStream();
+
+            int bytesRead = 10; // для считывания байтов из потока
+            await stream.WriteAsync(Encoding.UTF8.GetBytes("PING\0"));
+            while ((bytesRead = stream.ReadByte()) != '\0')
+            {
+                // добавляем в буфер
+                response.Add((byte)bytesRead);
+            }
+
+            var translation = Encoding.UTF8.GetString(response.ToArray());
+            if ("SUCCESS" == translation)
+            {
+                Preferences.Set("SavedIpServer", ipAddress);
+                Preferences.Set("SavedPortServer", port);
+                Preferences.Set("SavedPasswordServer", password); 
+                task = true;
+            }
+
+            response.Clear();
+            networkStream.Close();
         }
         catch
         {
-            return false;
         }
         finally
         {
-            client.Close();
-        }*/
-        return true;
+            tcpClient.Close();
+        }
     }
 }

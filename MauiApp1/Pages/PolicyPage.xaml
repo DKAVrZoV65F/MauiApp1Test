@@ -161,7 +161,6 @@
                 Text="{Binding LocalizationResourceManager[DescriptionPolicy], Mode=OneWay}"
                 TextColor="#A77979"
                 LineHeight="1.2"
-                FontSize="18"
                 FontFamily="RegularFont"
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="Center"
@@ -181,11 +180,10 @@
                 CheckedChanged="Agree_Changed"/>
             <Label
                 x:Name="InformationLabel"
-                Margin="0, 35"
                 Text="{Binding LocalizationResourceManager[PolicyAccept], Mode=OneWay}"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
-                FontSize="20"
-                FontFamily="BoldFont"/>
+                FontFamily="BoldFont"
+                VerticalTextAlignment="Center"/>
 
         </StackLayout>
 
@@ -197,7 +195,6 @@
             Text="{Binding LocalizationResourceManager[Accept], Mode=OneWay}"
             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White100}}"
             BackgroundColor="{AppThemeBinding Light={StaticResource White100}, Dark={StaticResource Gray970}}"
-            FontSize="18"
             FontFamily="BoldFont"
             Clicked="Accept_Clicked"
             CornerRadius="26"
