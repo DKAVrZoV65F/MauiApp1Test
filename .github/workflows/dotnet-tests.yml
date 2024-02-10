@@ -21,8 +21,8 @@ env:
 
 
 jobs:
-  test-1:
-    runs-on: windows-latest
+  test-report:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.1.1
 
@@ -31,11 +31,24 @@ jobs:
       with:
         dotnet-version: '8.0.x'
     
-    - name: Test without Error
-      run: dotnet test Tests
+    - name: Build Tests
+      run: dotnet test Tests --configuration Release
+      
+    - name: Test
+      run: dotnet test Tests --logger "trx;LogFileName=test-results.trx" || true
 
-  test-error:
-    runs-on: windows-latest
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: DotNET Tests
+        path: "**/test-results.trx"                            
+        reporter: dotnet-trx
+        fail-on-error: true
+
+
+  test-report-error:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.1.1
 
@@ -43,6 +56,18 @@ jobs:
       uses: actions/setup-dotnet@v4.0.0
       with:
         dotnet-version: '8.0.x'
-    
-    - name: Test Error
-      run: dotnet test TestError
+        
+    - name: Build Tests Error
+      run: dotnet test TestError --configuration Release
+      
+    - name: Test
+      run: dotnet test TestError --logger "trx;LogFileName=test-results.trx" || true
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: DotNET Tests
+        path: "**/test-results.trx"                            
+        reporter: dotnet-trx
+        fail-on-error: true
