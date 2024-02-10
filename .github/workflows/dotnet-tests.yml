@@ -32,7 +32,7 @@ jobs:
         dotnet-version: '8.0.x'
     
     - name: Build Tests
-      run: dotnet test Tests --configuration Release
+      run: dotnet build Tests --configuration Release
       
     - name: Test
       run: dotnet test Tests --logger "trx;LogFileName=test-results.trx" || true
@@ -58,16 +58,16 @@ jobs:
         dotnet-version: '8.0.x'
         
     - name: Build Tests Error
-      run: dotnet test TestError --configuration Release
+      run: dotnet build TestError --configuration Release
       
     - name: Test
-      run: dotnet test TestError --logger "trx;LogFileName=test-results.trx" || true
+      run: dotnet test TestError --logger "trx;LogFileName=test-error-results.trx" || true
 
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: always()
       with:
         name: DotNET Tests
-        path: "**/test-results.trx"                            
-        reporter: dotnet-trx
+        path: "**/test-error-results.trx"                            
+        reporter: dotnet-error-trx
         fail-on-error: true
