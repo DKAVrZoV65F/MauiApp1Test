@@ -19,7 +19,7 @@ env:
 
 jobs:
   test-report:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4.1.1
 
@@ -28,8 +28,8 @@ jobs:
       with:
         dotnet-version: '8.0.x'
     
-    - name: Build Tests
-      run: dotnet build Tests --configuration Release
+    - name: Build App
+      run: dotnet build MauiApp1/MauiApp1.csproj -c Release -f:net8.0-windows10.0.19041.0
       
     - name: Test
       run: dotnet test Tests --logger "trx;LogFileName=test-results.trx" || true
@@ -45,7 +45,7 @@ jobs:
 
 
   test-report-error:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4.1.1
 
@@ -53,18 +53,18 @@ jobs:
       uses: actions/setup-dotnet@v4.0.0
       with:
         dotnet-version: '8.0.x'
-        
-    - name: Build Tests
-      run: dotnet build TestError --configuration Release
+    
+    - name: Build App
+      run: dotnet build MauiApp1/MauiApp1.csproj -c Release -f:net8.0-windows10.0.19041.0
       
     - name: Test
-      run: dotnet test TestError --logger "trx;LogFileName=test-errorresults.trx" || true
+      run: dotnet test TestError --logger "trx;LogFileName=test-error-results.trx" || true
 
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: always()
       with:
         name: DotNET Tests
-        path: "**/test-errorresults.trx"                            
+        path: "**/test-error-results.trx"                            
         reporter: dotnet-trx
         fail-on-error: false
