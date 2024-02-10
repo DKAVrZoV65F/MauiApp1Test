@@ -1,0 +1,52 @@
+name: Report Test MAUI Apps
+
+on:
+  push:
+    branches: [ "master" ]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  
+
+env:
+  DOTNET_NOLOGO: true                     # Disable the .NET logo
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Disable the .NET first time experience
+  DOTNET_CLI_TELEMETRY_OPTOUT: true       # Disable sending .NET CLI telemetry
+  BUILD_CONFIG: 'Release'
+
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.1.1
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4.0.0
+      with:
+        dotnet-version: '8.0.x'
+        
+    - name: Restore dependencies
+      run: dotnet restore Tests
+    
+    - name: Build Tests
+      run: dotnet test Tests --configuration $BUILD_CONFIG
+      
+    - name: Test
+      run: dotnet test Tests --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1.8.0
+      if: always()
+      with:
+        name: Dotnet Tests
+        path: "**/test-results.trx"
+        reporter: dotnet-trx
+        fail-on-error: true
