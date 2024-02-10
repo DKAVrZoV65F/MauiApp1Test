@@ -27,22 +27,21 @@ jobs:
       uses: actions/setup-dotnet@v4.0.0
       with:
         dotnet-version: '8.0.x'
-        
-    - name: Restore dependencies
-      run: dotnet restore MauiApp1/MauiApp1.csproj
       
     - name: Build App
-      run: dotnet build MauiApp1/MauiApp1.csproj -c Release -f:net8.0-windows10.0.19041.0 --no-restore
+      run: dotnet build MauiApp1/MauiApp1.csproj -c Release -f:net8.0-windows10.0.19041.0
       
     - name: Test
-      run: dotnet test Tests --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx" || true 
+      run: dotnet test Tests --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx" || true
 
     - name: Publish Test Result
-      uses: EnricoMi/publish-unit-test-result-action@v2.14.0
+      uses: dorny/test-reporter@v1
       if: always()
       with:
-        name: DotNET Tests
-        trx_files: "**/test-results.trx"
+        name: Report Tests
+        path: "**/test-results.trx"                            
+        reporter: dotnet-trx
+        fail-on-error: false
 
 
   test-report-error:
@@ -65,8 +64,10 @@ jobs:
       run: dotnet test TestError --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx" || true 
 
     - name: Publish Test Result Error
-      uses: EnricoMi/publish-unit-test-result-action@v2.14.0
+      uses: dorny/test-reporter@v1
       if: always()
       with:
-        name: DotNET Tests Error
-        trx_files: "**/test-error-results.trx"
+        name: Report Tests Error
+        path: "**/test-results.trx"                            
+        reporter: dotnet-trx
+        fail-on-error: false
